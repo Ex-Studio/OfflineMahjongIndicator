@@ -2,26 +2,17 @@ import 'package:flutter/material.dart';
 
 void main() {
   runApp(
-    const MaterialApp(
-      home: App(),
+    MaterialApp(
+      home: Scaffold(
+        body: ContextView(),
+      ),
       debugShowCheckedModeBanner: false,
     ),
   );
 }
 
-class App extends StatelessWidget {
-  const App({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: ContextView(),
-    );
-  }
-}
-
 class ContextView extends StatelessWidget {
-  const ContextView({super.key});
+  ContextView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,8 +20,8 @@ class ContextView extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('Hello, world!'),
-          Text('Hello, world!'),
+          Text('Row 1'),
+          Text('Row 2'),
         ],
       ),
     );
