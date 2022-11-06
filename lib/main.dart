@@ -18,10 +18,7 @@ class ContextView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [Text('Row 1'), Text('Row 2'), MyView()],
-      ),
+      child: MyView(),
     );
   }
 }
@@ -42,11 +39,28 @@ class _MyViewState extends State<MyView> {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text("东$counterJu局"),
-        Text("$counterChang本场"),
+        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+          Text("东$counterJu局"),
+          SizedBox(width: 50),
+          Text("$counterChang本场"),
+        ]),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
+            ElevatedButton(
+              onPressed: () {
+                debugPrint("pressed");
+              },
+              style: ElevatedButton.styleFrom(
+                shape: CircleBorder(),
+                padding: EdgeInsets.all(16),
+                backgroundColor: Colors.blue, // <-- Button color
+                foregroundColor: Colors.white, // <-- Splash color
+              ),
+              child: Icon(
+                CupertinoIcons.lock,
+              ),
+            ),
             ElevatedButton(
                 onPressed: () {
                   debugPrint("pressed");
@@ -62,7 +76,17 @@ class _MyViewState extends State<MyView> {
                     counterChang += 1;
                   });
                 },
-                child: Text("加一本场")),
+                child: Text("加本场")),
+            ElevatedButton(
+                onPressed: () {
+                  debugPrint("pressed");
+                },
+                style: ElevatedButton.styleFrom(
+                  padding: EdgeInsets.all(16),
+                  backgroundColor: Colors.blue, // <-- Button color
+                  foregroundColor: Colors.red, // <-- Splash color
+                ),
+                child: Text("重置")),
           ],
         ),
       ],
