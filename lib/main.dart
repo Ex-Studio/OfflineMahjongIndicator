@@ -1,29 +1,38 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const App());
+  runApp(
+    const MaterialApp(
+      home: App(),
+      debugShowCheckedModeBanner: false,
+    ),
+  );
 }
 
 class App extends StatelessWidget {
   const App({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const HomeView(),
-      debugShowCheckedModeBanner: false,
+    return const Scaffold(
+      body: ContextView(),
     );
   }
 }
 
-class HomeView extends StatelessWidget {
-  const HomeView({super.key});
+class ContextView extends StatelessWidget {
+  const ContextView({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text("ahah",),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text('Hello, world!'),
+          Text('Hello, world!'),
+        ],
+      ),
     );
   }
 }
