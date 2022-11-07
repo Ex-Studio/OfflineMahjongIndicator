@@ -56,18 +56,26 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
         // 四周的局数和本场数
         MyCornerWidget(
             corner: MyCornerEnum.bottomLeft,
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage),
             rotationQuarterTurns: 0,
             child: currentJuChangText),
         MyCornerWidget(
             corner: MyCornerEnum.bottomRight,
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage),
             rotationQuarterTurns: 3,
             child: currentJuChangText),
         MyCornerWidget(
             corner: MyCornerEnum.topRight,
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage),
             rotationQuarterTurns: 2,
             child: currentJuChangText),
         MyCornerWidget(
             corner: MyCornerEnum.topLeft,
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage),
             rotationQuarterTurns: 1,
             child: currentJuChangText),
 
@@ -75,8 +83,10 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
         Consumer<MyModel>(
           builder: (context, model, child) {
             if (model.isOperating) {
-              return MyRoundCenterWidget(
+              return MyEdgeCenterWidget(
                   position: MyRoundEnum.topCenter,
+                  padding: MyExtensions.screenLengthShorter(context,
+                      percentage: defaultPaddingSizePercentage),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -122,8 +132,10 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
         Consumer<MyModel>(
           builder: (context, model, child) {
             if (model.isOperating) {
-              return MyRoundCenterWidget(
+              return MyEdgeCenterWidget(
                   position: MyRoundEnum.bottomCenter,
+                  padding: MyExtensions.screenLengthShorter(context,
+                      percentage: defaultPaddingSizePercentage),
                   child: ElevatedButton(
                       onPressed: () {
                         model.restartGame();
@@ -143,14 +155,23 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
           },
         ),
         // 帮助信息
-        MyRoundCenterWidget(
-            position: MyRoundEnum.rightCenter,
+
+        MyEdgeCenterWidget(
+            position: MyRoundEnum.bottomCenter,
             padding: MyExtensions.screenLengthShorter(context,
-                percentage: defaultPaddingSizePercentage * 2),
-            child: Icon(
-              CupertinoIcons.question_circle,
-              size: MyExtensions.screenLengthShorter(context,
-                  percentage: defaultIconSizePercentage),
+                percentage: defaultPaddingSizePercentage),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SizedBox(
+                    width: MyExtensions.screenWidth(context,
+                        percentage: 0.75)),
+                Icon(
+                  CupertinoIcons.question_circle,
+                  size: MyExtensions.screenLengthShorter(context,
+                      percentage: defaultIconSizePercentage),
+                )
+              ],
             )),
         MyCornerWidget(
             // TODO 这个要删除 移到弹出的窗口中

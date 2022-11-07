@@ -12,8 +12,8 @@ class MyCornerWidget extends StatelessWidget {
 
   MyCornerWidget({
     super.key,
-    this.corner = MyCornerEnum.topLeft,
-    this.padding = 10.0,
+    required this.corner,
+    required this.padding,
     this.rotationQuarterTurns = 0,
     required this.child,
   });
@@ -52,14 +52,15 @@ class MyCornerWidget extends StatelessWidget {
 enum MyRoundEnum { bottomCenter, topCenter, leftCenter, rightCenter }
 
 // use it in a `Stack`
-class MyRoundCenterWidget extends StatelessWidget {
+class MyEdgeCenterWidget extends StatelessWidget {
   final MyRoundEnum position;
   final double padding;
   final Widget child;
-  MyRoundCenterWidget({
+
+  MyEdgeCenterWidget({
     super.key,
     required this.position,
-    this.padding = 10.0,
+    required this.padding,
     required this.child,
   });
 
@@ -93,15 +94,14 @@ class MyRoundCenterWidget extends StatelessWidget {
 class MyVerticleAddMinusWidget extends StatelessWidget {
   double iconSize;
   Color buttonColor;
-
   VoidCallback addCallback;
   VoidCallback minusCallback;
   Widget child;
 
   MyVerticleAddMinusWidget({
     super.key,
-    this.iconSize = 40.0,
-    this.buttonColor = Colors.lightBlue,
+    required this.iconSize,
+    required this.buttonColor,
     required this.addCallback,
     required this.minusCallback,
     required this.child,

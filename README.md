@@ -1,1 +1,1 @@
-# playground221107
+# OfflineMahjongIndication
