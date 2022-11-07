@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "playground221107" "\0"
+            VALUE "FileDescription", "offlinemahjongindicator" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "playground221107" "\0"
+            VALUE "InternalName", "offlinemahjongindicator" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "playground221107.exe" "\0"
-            VALUE "ProductName", "playground221107" "\0"
+            VALUE "OriginalFilename", "offlinemahjongindicator.exe" "\0"
+            VALUE "ProductName", "offlinemahjongindicator" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

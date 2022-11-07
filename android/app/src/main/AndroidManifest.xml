@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.playground221107">
+    package="com.example.offlinemahjongindicator">
    <application
-        android:label="playground221107"
+        android:label="offlinemahjongindicator"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

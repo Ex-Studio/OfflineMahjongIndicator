@@ -1,6 +1,6 @@
 {
-    "name": "playground221107",
-    "short_name": "playground221107",
+    "name": "offlinemahjongindicator",
+    "short_name": "offlinemahjongindicator",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

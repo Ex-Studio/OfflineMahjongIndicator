@@ -3,10 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
-import 'package:playground221107/_extensions.dart';
-import 'package:playground221107/_models.dart';
-import 'package:playground221107/_widgets.dart';
-import 'package:playground221107/_constants.dart';
+import 'package:offlinemahjongindicator/_extensions.dart';
+import 'package:offlinemahjongindicator/_models.dart';
+import 'package:offlinemahjongindicator/_widgets.dart';
+import 'package:offlinemahjongindicator/_constants.dart';
 
 void main() {
   runApp(

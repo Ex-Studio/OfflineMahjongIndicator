@@ -1,1 +1,1 @@
-# OfflineMahjongIndication
+# OfflineMahjongIndicator

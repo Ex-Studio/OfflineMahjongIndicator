@@ -1,4 +1,4 @@
-package com.example.playground221107
+package com.example.offlinemahjongindicator
 
 import io.flutter.embedding.android.FlutterActivity
 
