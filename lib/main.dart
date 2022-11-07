@@ -27,17 +27,6 @@ class ContextView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String debugInfo = """
-[DEBUG]
-${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
-""";
-
-    String usageInfo = """
-[使用说明]
-将手机朝东家横向放置
-长按解锁按键进行操作
-""";
-
     final currentJuChangText = Consumer<MyModel>(
       builder: (context, model, child) {
         return Text(
@@ -78,7 +67,6 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
                 percentage: defaultPaddingSizePercentage),
             rotationQuarterTurns: 1,
             child: currentJuChangText),
-
         // 上方的重置按钮
         Consumer<MyModel>(
           builder: (context, model, child) {
@@ -154,7 +142,7 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
             }
           },
         ),
-        // 帮助信息
+        // 帮助按钮
         MyEdgeCenterWidget(
             position: MyRoundEnum.bottomCenter,
             padding: MyExtensions.screenLengthShorter(context,

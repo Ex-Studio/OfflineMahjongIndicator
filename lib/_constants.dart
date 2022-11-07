@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-// [sizes]
+// [ui.sizes]
 
 const double centerButtonIconSizePercentage = 0.12;
 const double centerButtonPaddingSizePercentage = 0.05;
@@ -16,6 +16,14 @@ const double defaultIconSizePercentage = 0.08;
 
 const double debugTextSizePercentage = 0.04;
 
-// [colors]
+// [ui.colors]
 
 const Color defaultColor = Colors.lightBlue;
+
+// [values]
+
+const String usageInfo = """
+[使用说明]
+将手机朝东家横向放置
+长按解锁按键进行操作
+""";
