@@ -155,7 +155,6 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
           },
         ),
         // 帮助信息
-
         MyEdgeCenterWidget(
             position: MyRoundEnum.bottomCenter,
             padding: MyExtensions.screenLengthShorter(context,
@@ -164,8 +163,7 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 SizedBox(
-                    width: MyExtensions.screenWidth(context,
-                        percentage: 0.75)),
+                    width: MyExtensions.screenWidth(context, percentage: 0.75)),
                 Icon(
                   CupertinoIcons.question_circle,
                   size: MyExtensions.screenLengthShorter(context,
@@ -179,15 +177,6 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
                 percentage: defaultTextSizePercentage * 2),
             corner: MyCornerEnum.bottomLeft,
             child: Text(usageInfo,
-                style: TextStyle(
-                    fontSize: MyExtensions.screenLengthShorter(context,
-                        percentage: debugTextSizePercentage)))),
-        // 调试信息
-        MyCornerWidget(
-            padding: MyExtensions.screenLengthShorter(context,
-                percentage: defaultTextSizePercentage * 2),
-            corner: MyCornerEnum.topLeft,
-            child: Text(debugInfo,
                 style: TextStyle(
                     fontSize: MyExtensions.screenLengthShorter(context,
                         percentage: debugTextSizePercentage)))),
