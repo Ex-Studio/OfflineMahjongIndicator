@@ -20,13 +20,13 @@ class YxjExtensions {
 enum YxjCorner { bottomLeft, bottomRight, topLeft, topRight }
 
 // use it in a `Stack`
-class YxjCornerView extends StatelessWidget {
+class YxjCornerWidget extends StatelessWidget {
   final YxjCorner corner;
   final double padding;
   final int rotationQuarterTurns;
   final Widget child;
 
-  YxjCornerView({
+  YxjCornerWidget({
     super.key,
     this.corner = YxjCorner.topLeft,
     this.padding = 10.0,

@@ -19,37 +19,26 @@ class ContextView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: HomePage(),
-    );
-  }
-}
-
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
     return Stack(
       children: [
-        YxjCornerView(
+        YxjCornerWidget(
             padding: 40.0, corner: YxjCorner.topLeft, child: Text("""[DEBUG]
 ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
 \u00a9""")),
         YxjCenterView(),
-        YxjCornerView(
+        YxjCornerWidget(
             corner: YxjCorner.bottomLeft,
             rotationQuarterTurns: 0,
             child: Text("东1局" + " " + "𝛩" * 2)),
-        YxjCornerView(
+        YxjCornerWidget(
             corner: YxjCorner.bottomRight,
             rotationQuarterTurns: 1,
             child: Text("东1局" + " " + "𝛩" * 2)),
-        YxjCornerView(
+        YxjCornerWidget(
             corner: YxjCorner.topRight,
             rotationQuarterTurns: 2,
             child: Text("东1局" + " " + "𝛩" * 2)),
-        YxjCornerView(
+        YxjCornerWidget(
             corner: YxjCorner.topLeft,
             rotationQuarterTurns: 3,
             child: Text("东1局" + " " + "𝛩" * 2)),
@@ -58,36 +47,20 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
   }
 }
 
-class YxjCenterView extends StatefulWidget {
+class YxjCenterView extends StatelessWidget {
   const YxjCenterView({super.key});
-
-  @override
-  State<YxjCenterView> createState() => _MyViewState();
-}
-
-class _MyViewState extends State<YxjCenterView> {
-  int counterJu = 0;
-  int counterChang = 0;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-          Text("东$counterJu局"),
-          SizedBox(width: 50),
-          Text("$counterChang本场"),
-        ]),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
                 onPressed: () {
                   debugPrint("pressed");
-                  setState(() {
-                    counterJu += 1;
-                  });
                 },
                 child: Text("下一场")),
             ElevatedButton(
@@ -108,9 +81,6 @@ class _MyViewState extends State<YxjCenterView> {
             ElevatedButton(
                 onPressed: () {
                   debugPrint("pressed");
-                  setState(() {
-                    counterChang += 1;
-                  });
                 },
                 child: Text("加本场")),
             ElevatedButton(
