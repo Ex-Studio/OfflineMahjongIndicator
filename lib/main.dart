@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:playground221107/extension.dart';
-import 'extension.dart';
 
 void main() {
   runApp(
@@ -19,12 +18,15 @@ class ContextView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String debugInfo = """
+[DEBUG]
+${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
+""";
+
     return Stack(
       children: [
         YxjCornerWidget(
-            padding: 40.0, corner: YxjCorner.topLeft, child: Text("""[DEBUG]
-${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
-\u00a9""")),
+            padding: 40.0, corner: YxjCorner.topLeft, child: Text(debugInfo)),
         YxjCenterView(),
         YxjCornerWidget(
             corner: YxjCorner.bottomLeft,
@@ -59,11 +61,6 @@ class YxjCenterView extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
-                onPressed: () {
-                  debugPrint("pressed");
-                },
-                child: Text("下一场")),
-            ElevatedButton(
               onPressed: () {
                 debugPrint("pressed");
               },
@@ -78,21 +75,6 @@ class YxjCenterView extends StatelessWidget {
                 size: YxjExtensions.screenLengthShorter(context) * 0.1,
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  debugPrint("pressed");
-                },
-                child: Text("加本场")),
-            ElevatedButton(
-                onPressed: () {
-                  debugPrint("pressed");
-                },
-                style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.all(16),
-                  backgroundColor: Colors.blue, // <-- Button color
-                  foregroundColor: Colors.red, // <-- Splash color
-                ),
-                child: Text("重置")),
           ],
         ),
       ],
