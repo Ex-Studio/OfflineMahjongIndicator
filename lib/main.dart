@@ -54,7 +54,6 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
     return Stack(
       children: [
         // 中间的解锁按钮和东南西北
-
         CenterView(),
         // 四周的局数和本场数
         MyCornerWidget(
@@ -133,8 +132,27 @@ class CenterView extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        Consumer<MyModel>(
+          builder: (context, model, child) {
+            if (!model.isOperating) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RotatedBox(
+                      quarterTurns: 2,
+                      child: Text(
+                        "西",
+                        style: centerLargeTextStyle,
+                      ))
+                ],
+              );
+            } else {
+              return SizedBox.shrink();
+            }
+          },
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Consumer<MyModel>(
               builder: (context, model, child) {
@@ -143,9 +161,9 @@ class CenterView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       RotatedBox(
-                          quarterTurns: 2,
+                          quarterTurns: 1,
                           child: Text(
-                            "西",
+                            "北",
                             style: centerLargeTextStyle,
                           ))
                     ],
@@ -155,77 +173,34 @@ class CenterView extends StatelessWidget {
                 }
               },
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Consumer<MyModel>(
-                  builder: (context, model, child) {
+            Consumer<MyModel>(
+              builder: (context, model, child) {
+                return ElevatedButton(
+                  onPressed: () {
                     if (!model.isOperating) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RotatedBox(
-                              quarterTurns: 1,
-                              child: Text(
-                                "北",
-                                style: centerLargeTextStyle,
-                              ))
-                        ],
-                      );
+                      debugPrint("pressed lock button");
+                      model.startOperating();
                     } else {
-                      return SizedBox.shrink();
+                      debugPrint("pressed play button");
+                      model.endOperating();
                     }
                   },
-                ),
-                Consumer<MyModel>(
-                  builder: (context, model, child) {
-                    return ElevatedButton(
-                      onPressed: () {
-                        if (!model.isOperating) {
-                          debugPrint("pressed lock button");
-                          model.startOperating();
-                        } else {
-                          debugPrint("pressed play button");
-                          model.endOperating();
-                        }
-                      },
-                      style: ElevatedButton.styleFrom(
-                        padding: EdgeInsets.all(
-                            MyExtensions.screenLengthShorter(context) *
-                                centerButtonPaddingSizePercentage),
-                        backgroundColor: appAccentColor,
-                        foregroundColor: Colors.white,
-                      ),
-                      child: Icon(
-                        model.isOperating
-                            ? CupertinoIcons.play
-                            : CupertinoIcons.lock,
-                        size: MyExtensions.screenLengthShorter(context) *
-                            centerButtonIconSizePercentage,
-                      ),
-                    );
-                  },
-                ),
-                Consumer<MyModel>(
-                  builder: (context, model, child) {
-                    if (!model.isOperating) {
-                      return Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          RotatedBox(
-                              quarterTurns: 3,
-                              child: Text(
-                                "南",
-                                style: centerLargeTextStyle,
-                              ))
-                        ],
-                      );
-                    } else {
-                      return SizedBox.shrink();
-                    }
-                  },
-                ),
-              ],
+                  style: ElevatedButton.styleFrom(
+                    padding: EdgeInsets.all(
+                        MyExtensions.screenLengthShorter(context) *
+                            centerButtonPaddingSizePercentage),
+                    backgroundColor: appAccentColor,
+                    foregroundColor: Colors.white,
+                  ),
+                  child: Icon(
+                    model.isOperating
+                        ? CupertinoIcons.play
+                        : CupertinoIcons.lock,
+                    size: MyExtensions.screenLengthShorter(context) *
+                        centerButtonIconSizePercentage,
+                  ),
+                );
+              },
             ),
             Consumer<MyModel>(
               builder: (context, model, child) {
@@ -234,9 +209,9 @@ class CenterView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       RotatedBox(
-                          quarterTurns: 0,
+                          quarterTurns: 3,
                           child: Text(
-                            "东",
+                            "南",
                             style: centerLargeTextStyle,
                           ))
                     ],
@@ -247,6 +222,25 @@ class CenterView extends StatelessWidget {
               },
             ),
           ],
+        ),
+        Consumer<MyModel>(
+          builder: (context, model, child) {
+            if (!model.isOperating) {
+              return Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  RotatedBox(
+                      quarterTurns: 0,
+                      child: Text(
+                        "东",
+                        style: centerLargeTextStyle,
+                      ))
+                ],
+              );
+            } else {
+              return SizedBox.shrink();
+            }
+          },
         ),
       ],
     );
