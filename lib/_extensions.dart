@@ -11,8 +11,10 @@ class MyExtensions {
     return MediaQuery.of(context).size.height;
   }
 
-  static double screenLengthShorter(BuildContext context) {
-    return min(
-        MyExtensions.screenWidth(context), MyExtensions.screenHeight(context));
+  static double screenLengthShorter(BuildContext context,
+      {double percentage = 1.0}) {
+    return percentage *
+        min(MyExtensions.screenWidth(context),
+            MyExtensions.screenHeight(context));
   }
 }

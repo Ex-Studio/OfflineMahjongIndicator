@@ -38,15 +38,13 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
 长按解锁按键进行操作
 """;
 
-    TextStyle cornerSmallTextStyle = TextStyle(
-        fontSize: MyExtensions.screenLengthShorter(context) *
-            cornerSmallTextSizePercentage);
-
     final currentJuChangText = Consumer<MyModel>(
       builder: (context, model, child) {
         return Text(
           "${model.currentJu.description()} ꘖx${model.currentChang}",
-          style: cornerSmallTextStyle,
+          style: TextStyle(
+              fontSize: MyExtensions.screenLengthShorter(context,
+                  percentage: defaultTextSizePercentage)),
         );
       },
     );
@@ -87,30 +85,32 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
                             model.resetJu();
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: appAccentColor,
+                            backgroundColor: defaultColor,
                             foregroundColor: Colors.white,
                           ),
                           child: Text("重置局",
                               style: TextStyle(
                                   fontSize: MyExtensions.screenLengthShorter(
-                                          context) *
-                                      operationButtonTextSizePercentage))),
+                                      context,
+                                      percentage:
+                                          operationTextSizePercentage)))),
                       SizedBox(
-                          width: MyExtensions.screenLengthShorter(context) *
-                              paddingSizePercentage),
+                          width: MyExtensions.screenLengthShorter(context,
+                              percentage: defaultPaddingSizePercentage)),
                       ElevatedButton(
                           onPressed: () {
                             model.resetChang();
                           },
                           style: ElevatedButton.styleFrom(
-                            backgroundColor: appAccentColor,
+                            backgroundColor: defaultColor,
                             foregroundColor: Colors.white,
                           ),
                           child: Text("重置场",
                               style: TextStyle(
                                   fontSize: MyExtensions.screenLengthShorter(
-                                          context) *
-                                      operationButtonTextSizePercentage)))
+                                      context,
+                                      percentage:
+                                          operationTextSizePercentage))))
                     ],
                   ));
             } else {
@@ -129,38 +129,47 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
                         model.restartGame();
                       },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: appAccentColor,
+                        backgroundColor: defaultColor,
                         foregroundColor: Colors.white,
                       ),
                       child: Text("重新开始",
                           style: TextStyle(
-                              fontSize:
-                                  MyExtensions.screenLengthShorter(context) *
-                                      operationButtonTextSizePercentage))));
+                              fontSize: MyExtensions.screenLengthShorter(
+                                  context,
+                                  percentage: operationTextSizePercentage)))));
             } else {
               return SizedBox.shrink();
             }
           },
         ),
-        // 调试信息
+        // 帮助信息
+        MyRoundCenterWidget(
+            position: MyRoundEnum.rightCenter,
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage * 2),
+            child: Icon(
+              CupertinoIcons.question_circle,
+              size: MyExtensions.screenLengthShorter(context,
+                  percentage: defaultIconSizePercentage),
+            )),
         MyCornerWidget(
-            padding: MyExtensions.screenLengthShorter(context) *
-                2.0 *
-                cornerSmallTextSizePercentage,
-            corner: MyCornerEnum.topLeft,
-            child: Text(debugInfo,
-                style: TextStyle(
-                    fontSize: MyExtensions.screenLengthShorter(context) *
-                        debugTextSizePercentage))),
-        MyCornerWidget(
-            padding: MyExtensions.screenLengthShorter(context) *
-                2.0 *
-                cornerSmallTextSizePercentage,
+            // TODO 这个要删除 移到弹出的窗口中
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultTextSizePercentage * 2),
             corner: MyCornerEnum.bottomLeft,
             child: Text(usageInfo,
                 style: TextStyle(
-                    fontSize: MyExtensions.screenLengthShorter(context) *
-                        debugTextSizePercentage))),
+                    fontSize: MyExtensions.screenLengthShorter(context,
+                        percentage: debugTextSizePercentage)))),
+        // 调试信息
+        MyCornerWidget(
+            padding: MyExtensions.screenLengthShorter(context,
+                percentage: defaultTextSizePercentage * 2),
+            corner: MyCornerEnum.topLeft,
+            child: Text(debugInfo,
+                style: TextStyle(
+                    fontSize: MyExtensions.screenLengthShorter(context,
+                        percentage: debugTextSizePercentage)))),
       ],
     );
   }
@@ -172,8 +181,8 @@ class CenterView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     TextStyle centerLargeTextStyle = TextStyle(
-        fontSize: MyExtensions.screenLengthShorter(context) *
-            centerLargeTextSizePercentage,
+        fontSize: MyExtensions.screenLengthShorter(context,
+            percentage: centerLargeTextSizePercentage),
         fontWeight: FontWeight.bold);
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -218,14 +227,13 @@ class CenterView extends StatelessWidget {
                   );
                 } else {
                   return MyVerticleAddMinusWidget(
-                    iconSize: MyExtensions.screenLengthShorter(context) *
-                        operationButtonIconSizePercentage,
-                    buttonColor: appAccentColor,
+                    iconSize: MyExtensions.screenLengthShorter(context,
+                        percentage: operationIconSizePercentage),
+                    buttonColor: defaultColor,
                     child: Text("局",
                         style: TextStyle(
-                            fontSize:
-                                MyExtensions.screenLengthShorter(context) *
-                                    operationButtonTextSizePercentage)),
+                            fontSize: MyExtensions.screenLengthShorter(context,
+                                percentage: operationTextSizePercentage))),
                     addCallback: () {
                       model.goNextJu();
                     },
@@ -249,18 +257,18 @@ class CenterView extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.all(
-                        MyExtensions.screenLengthShorter(context) *
-                            centerButtonPaddingSizePercentage),
-                    backgroundColor: appAccentColor,
+                    padding: EdgeInsets.all(MyExtensions.screenLengthShorter(
+                        context,
+                        percentage: centerButtonPaddingSizePercentage)),
+                    backgroundColor: defaultColor,
                     foregroundColor: Colors.white,
                   ),
                   child: Icon(
                     model.isOperating
                         ? CupertinoIcons.play
                         : CupertinoIcons.lock,
-                    size: MyExtensions.screenLengthShorter(context) *
-                        centerButtonIconSizePercentage,
+                    size: MyExtensions.screenLengthShorter(context,
+                        percentage: centerButtonIconSizePercentage),
                   ),
                 );
               },
@@ -281,14 +289,13 @@ class CenterView extends StatelessWidget {
                   );
                 } else {
                   return MyVerticleAddMinusWidget(
-                    iconSize: MyExtensions.screenLengthShorter(context) *
-                        operationButtonIconSizePercentage,
-                    buttonColor: appAccentColor,
+                    iconSize: MyExtensions.screenLengthShorter(context,
+                        percentage: operationIconSizePercentage),
+                    buttonColor: defaultColor,
                     child: Text("场",
                         style: TextStyle(
-                            fontSize:
-                                MyExtensions.screenLengthShorter(context) *
-                                    operationButtonTextSizePercentage)),
+                            fontSize: MyExtensions.screenLengthShorter(context,
+                                percentage: operationTextSizePercentage))),
                     addCallback: () {
                       model.goNextChang();
                     },
