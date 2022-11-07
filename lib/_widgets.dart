@@ -47,3 +47,44 @@ class MyCornerWidget extends StatelessWidget {
     }
   }
 }
+
+enum MyRoundEnum { bottomCenter, topCenter, leftCenter, rightCenter }
+
+// use it in a `Stack`
+class MyRoundCenterWidget extends StatelessWidget {
+  final MyRoundEnum position;
+  final double padding;
+  final Widget child;
+  MyRoundCenterWidget({
+    super.key,
+    required this.position,
+    this.padding = 10.0,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    switch (position) {
+      case MyRoundEnum.bottomCenter:
+        return Positioned.fill(
+          bottom: padding,
+          child: Align(alignment: Alignment.bottomCenter, child: child),
+        );
+      case MyRoundEnum.topCenter:
+        return Positioned.fill(
+          top: padding,
+          child: Align(alignment: Alignment.topCenter, child: child),
+        );
+      case MyRoundEnum.leftCenter:
+        return Positioned.fill(
+          left: padding,
+          child: Align(alignment: Alignment.centerLeft, child: child),
+        );
+      case MyRoundEnum.rightCenter:
+        return Positioned.fill(
+          right: padding,
+          child: Align(alignment: Alignment.centerRight, child: child),
+        );
+    }
+  }
+}

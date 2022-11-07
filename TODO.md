@@ -1,26 +1,14 @@
 # TODO
 
-- 字体调大  加按钮
-- 下一场下方/上方的Widget如何布局
-- 长按解锁的动画（转一圈然后解锁）之后的切换动画
-- 字体使用图片风格化/添加背景图片
+- 长按解锁的动画（转一圈然后解锁）
+- 加操作界面的按钮
 - 下方的alert 随时间消失 一打开可以放一些说明问题
-- 加一个计时器表示当前局进行的时间
+- 通过web发布到自己的服务器上/导出apk
+- 使用说明变成那种弹窗吧  放个问号在最右边吧
 
-```dart
-ElevatedButton(
-    onPressed: () {
-        debugPrint("pressed");
-    },
-    child: Text("加本场")),
-ElevatedButton(
-    onPressed: () {
-        debugPrint("pressed");
-    },
-    style: ElevatedButton.styleFrom(
-        padding: EdgeInsets.all(16),
-        backgroundColor: Colors.blue, // <-- Button color
-        foregroundColor: Colors.red, // <-- Splash color
-    ),
-    child: Text("重置")),
-```
+## Others
+
+- restartGame添加弹窗确认
+- 加一个计时器表示当前局进行的时间
+- 解锁之后的切换动画
+- 字体使用图片风格化/添加背景图片

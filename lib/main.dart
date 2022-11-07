@@ -53,6 +53,23 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
 
     return Stack(
       children: [
+        CenterView(),
+        MyCornerWidget(
+            corner: MyCornerEnum.bottomLeft,
+            rotationQuarterTurns: 0,
+            child: currentJuChangText),
+        MyCornerWidget(
+            corner: MyCornerEnum.bottomRight,
+            rotationQuarterTurns: 3,
+            child: currentJuChangText),
+        MyCornerWidget(
+            corner: MyCornerEnum.topRight,
+            rotationQuarterTurns: 2,
+            child: currentJuChangText),
+        MyCornerWidget(
+            corner: MyCornerEnum.topLeft,
+            rotationQuarterTurns: 1,
+            child: currentJuChangText),
         MyCornerWidget(
             padding: MyExtensions.screenLengthShorter(context) *
                 2.0 *
@@ -71,23 +88,25 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
                 style: TextStyle(
                     fontSize: MyExtensions.screenLengthShorter(context) *
                         debugTextSizePercentage))),
-        CenterView(),
-        MyCornerWidget(
-            corner: MyCornerEnum.bottomLeft,
-            rotationQuarterTurns: 0,
-            child: currentJuChangText),
-        MyCornerWidget(
-            corner: MyCornerEnum.bottomRight,
-            rotationQuarterTurns: 3,
-            child: currentJuChangText),
-        MyCornerWidget(
-            corner: MyCornerEnum.topRight,
-            rotationQuarterTurns: 2,
-            child: currentJuChangText),
-        MyCornerWidget(
-            corner: MyCornerEnum.topLeft,
-            rotationQuarterTurns: 1,
-            child: currentJuChangText),
+        MyRoundCenterWidget(
+            position: MyRoundEnum.bottomCenter,
+            child: Consumer<MyModel>(
+              builder: (context, model, child) {
+                return ElevatedButton(
+                    onPressed: () {
+                      model.restartGame();
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: appAccentColor,
+                      foregroundColor: Colors.white,
+                    ),
+                    child: Text("重新开始",
+                        style: TextStyle(
+                            fontSize:
+                                MyExtensions.screenLengthShorter(context) *
+                                    operationButtonTextSizePercentage)));
+              },
+            ))
       ],
     );
   }
@@ -141,11 +160,10 @@ class CenterView extends StatelessWidget {
                         }
                       },
                       style: ElevatedButton.styleFrom(
-                        // shape: CircleBorder(),
                         padding: EdgeInsets.all(
                             MyExtensions.screenLengthShorter(context) *
                                 centerButtonPaddingSizePercentage),
-                        backgroundColor: Colors.blue,
+                        backgroundColor: appAccentColor,
                         foregroundColor: Colors.white,
                       ),
                       child: Icon(
