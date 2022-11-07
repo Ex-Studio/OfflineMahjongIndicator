@@ -41,19 +41,19 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
         YxjCornerWidget(
             corner: YxjCorner.bottomLeft,
             rotationQuarterTurns: 0,
-            child: Text("東1局" + " " + "𝛩" * 2)),
+            child: Text("東1局" + " " + "ꘖ" * 2)),
         YxjCornerWidget(
             corner: YxjCorner.bottomRight,
-            rotationQuarterTurns: 1,
-            child: Text("東1局" + " " + "𝛩" * 2)),
+            rotationQuarterTurns: 3,
+            child: Text("東1局" + " " + "ꘖ" * 2)),
         YxjCornerWidget(
             corner: YxjCorner.topRight,
             rotationQuarterTurns: 2,
-            child: Text("東1局" + " " + "𝛩" * 2)),
+            child: Text("東1局" + " " + "ꘖ" * 2)),
         YxjCornerWidget(
             corner: YxjCorner.topLeft,
-            rotationQuarterTurns: 3,
-            child: Text("東1局" + " " + "𝛩" * 2)),
+            rotationQuarterTurns: 1,
+            child: Text("東1局" + " " + "ꘖ" * 2)),
       ],
     );
   }
