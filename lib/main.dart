@@ -3,8 +3,9 @@ import 'package:provider/provider.dart';
 
 import 'package:flutter/cupertino.dart';
 
-import 'package:playground221107/extension.dart';
-import 'package:playground221107/model.dart';
+import 'package:playground221107/_extensions.dart';
+import 'package:playground221107/_models.dart';
+import 'package:playground221107/_widgets.dart';
 
 void main() {
   runApp(
@@ -36,6 +37,12 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
 长按解锁按键进行操作
 """;
 
+    final currentJuChangText = Consumer<YxjGameModel>(
+      builder: (context, model, child) {
+        return Text("${model.currentJu.description()} ꘖx${model.currentChang}");
+      },
+    );
+
     return Stack(
       children: [
         YxjCornerWidget(
@@ -48,19 +55,19 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
         YxjCornerWidget(
             corner: YxjCorner.bottomLeft,
             rotationQuarterTurns: 0,
-            child: Text("東1局" + " " + "ꘖ" * 2)),
+            child: currentJuChangText),
         YxjCornerWidget(
             corner: YxjCorner.bottomRight,
             rotationQuarterTurns: 3,
-            child: Text("東1局" + " " + "ꘖ" * 2)),
+            child: currentJuChangText),
         YxjCornerWidget(
             corner: YxjCorner.topRight,
             rotationQuarterTurns: 2,
-            child: Text("東1局" + " " + "ꘖ" * 2)),
+            child: currentJuChangText),
         YxjCornerWidget(
             corner: YxjCorner.topLeft,
             rotationQuarterTurns: 1,
-            child: Text("東1局" + " " + "ꘖ" * 2)),
+            child: currentJuChangText),
       ],
     );
   }
@@ -89,10 +96,11 @@ class YxjCenterView extends StatelessWidget {
                   builder: (context, model, child) {
                     return ElevatedButton(
                       onPressed: () {
-                        debugPrint("pressed lock button");
                         if (!model.isOperating) {
+                          debugPrint("pressed lock button");
                           model.startOperating();
                         } else {
+                          debugPrint("pressed play button");
                           model.endOperating();
                         }
                       },
