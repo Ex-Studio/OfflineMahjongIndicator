@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 
-class Extension {
+class YxjExtensions {
   static double screenWidth(BuildContext context) {
     return MediaQuery.of(context).size.width;
   }
@@ -12,6 +12,55 @@ class Extension {
   }
 
   static double screenLengthShorter(BuildContext context) {
-    return min(Extension.screenWidth(context), Extension.screenHeight(context));
+    return min(YxjExtensions.screenWidth(context),
+        YxjExtensions.screenHeight(context));
+  }
+}
+
+enum YxjCorner { bottomLeft, bottomRight, topLeft, topRight }
+
+// use it in a `Stack`
+class YxjCornerView extends StatelessWidget {
+  final YxjCorner corner;
+  final double padding;
+  final int rotationQuarterTurns;
+  final Widget child;
+
+  YxjCornerView({
+    super.key,
+    this.corner = YxjCorner.topLeft,
+    this.padding = 10.0,
+    this.rotationQuarterTurns = 0,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    switch (corner) {
+      case YxjCorner.bottomLeft:
+        return Positioned(
+            bottom: padding,
+            left: padding,
+            child:
+                RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
+      case YxjCorner.bottomRight:
+        return Positioned(
+            bottom: padding,
+            right: padding,
+            child:
+                RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
+      case YxjCorner.topLeft:
+        return Positioned(
+            top: padding,
+            left: padding,
+            child:
+                RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
+      case YxjCorner.topRight:
+        return Positioned(
+            top: padding,
+            right: padding,
+            child:
+                RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
+    }
   }
 }

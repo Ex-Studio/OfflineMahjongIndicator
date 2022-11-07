@@ -32,33 +32,40 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        MyView(),
-        Positioned(
-          bottom: 10.0,
-          right: 10.0,
-          child: Icon(
-            CupertinoIcons.lock,
-            size: Extension.screenLengthShorter(context) * 0.1,
-          ),
-        ),
-        Positioned(
-            left: 10.0,
-            top: 10.0,
-            child: Text(
-                "[DEBUG] ${Extension.screenWidth(context)}x${Extension.screenHeight(context)}"))
+        YxjCornerView(
+            padding: 40.0, corner: YxjCorner.topLeft, child: Text("""[DEBUG]
+${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
+\u00a9""")),
+        YxjCenterView(),
+        YxjCornerView(
+            corner: YxjCorner.bottomLeft,
+            rotationQuarterTurns: 0,
+            child: Text("东1局" + " " + "𝛩" * 2)),
+        YxjCornerView(
+            corner: YxjCorner.bottomRight,
+            rotationQuarterTurns: 1,
+            child: Text("东1局" + " " + "𝛩" * 2)),
+        YxjCornerView(
+            corner: YxjCorner.topRight,
+            rotationQuarterTurns: 2,
+            child: Text("东1局" + " " + "𝛩" * 2)),
+        YxjCornerView(
+            corner: YxjCorner.topLeft,
+            rotationQuarterTurns: 3,
+            child: Text("东1局" + " " + "𝛩" * 2)),
       ],
     );
   }
 }
 
-class MyView extends StatefulWidget {
-  const MyView({super.key});
+class YxjCenterView extends StatefulWidget {
+  const YxjCenterView({super.key});
 
   @override
-  State<MyView> createState() => _MyViewState();
+  State<YxjCenterView> createState() => _MyViewState();
 }
 
-class _MyViewState extends State<MyView> {
+class _MyViewState extends State<YxjCenterView> {
   int counterJu = 0;
   int counterChang = 0;
 
@@ -76,6 +83,14 @@ class _MyViewState extends State<MyView> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             ElevatedButton(
+                onPressed: () {
+                  debugPrint("pressed");
+                  setState(() {
+                    counterJu += 1;
+                  });
+                },
+                child: Text("下一场")),
+            ElevatedButton(
               onPressed: () {
                 debugPrint("pressed");
               },
@@ -87,16 +102,9 @@ class _MyViewState extends State<MyView> {
               ),
               child: Icon(
                 CupertinoIcons.lock,
+                size: YxjExtensions.screenLengthShorter(context) * 0.1,
               ),
             ),
-            ElevatedButton(
-                onPressed: () {
-                  debugPrint("pressed");
-                  setState(() {
-                    counterJu += 1;
-                  });
-                },
-                child: Text("下一场")),
             ElevatedButton(
                 onPressed: () {
                   debugPrint("pressed");
