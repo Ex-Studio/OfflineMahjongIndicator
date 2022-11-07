@@ -132,6 +132,7 @@ class CenterView extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        // 按钮上方的行
         Consumer<MyModel>(
           builder: (context, model, child) {
             if (!model.isOperating) {
@@ -147,10 +148,69 @@ class CenterView extends StatelessWidget {
                 ],
               );
             } else {
-              return SizedBox.shrink();
+              return
+                  // 操作界面最中间按钮上方
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    ElevatedButton(
+                        onPressed: () {
+                          model.resetChang();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: appAccentColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: Text("重置",
+                            style: TextStyle(
+                                fontSize:
+                                    MyExtensions.screenLengthShorter(context) *
+                                        operationButtonTextSizePercentage))),
+                    // 本场一行
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          model.goPreviousChang();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          backgroundColor: appAccentColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: Icon(
+                          CupertinoIcons.minus,
+                          size: MyExtensions.screenLengthShorter(context) *
+                              operationButtonIconSizePercentage,
+                        ),
+                      ),
+                      Text(
+                        "本场",
+                        style: TextStyle(
+                            fontSize:
+                                MyExtensions.screenLengthShorter(context) *
+                                    operationButtonTextSizePercentage),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          model.goNextChang();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          backgroundColor: appAccentColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: Icon(
+                          CupertinoIcons.add,
+                          size: MyExtensions.screenLengthShorter(context) *
+                              operationButtonIconSizePercentage,
+                        ),
+                      ),
+                    ]),
+                  ]);
             }
           },
         ),
+        // 按钮所在的中间行
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -223,6 +283,7 @@ class CenterView extends StatelessWidget {
             ),
           ],
         ),
+        // 按钮下方的行
         Consumer<MyModel>(
           builder: (context, model, child) {
             if (!model.isOperating) {
@@ -238,7 +299,65 @@ class CenterView extends StatelessWidget {
                 ],
               );
             } else {
-              return SizedBox.shrink();
+              return
+                  // 操作界面最中间按钮下方
+                  Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                    // 局一行
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                      ElevatedButton(
+                        onPressed: () {
+                          model.goPreviousJu();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          backgroundColor: appAccentColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: Icon(
+                          CupertinoIcons.minus,
+                          size: MyExtensions.screenLengthShorter(context) *
+                              operationButtonIconSizePercentage,
+                        ),
+                      ),
+                      Text(
+                        "局",
+                        style: TextStyle(
+                            fontSize:
+                                MyExtensions.screenLengthShorter(context) *
+                                    operationButtonTextSizePercentage),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          model.goNextJu();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          shape: CircleBorder(),
+                          backgroundColor: appAccentColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: Icon(
+                          CupertinoIcons.add,
+                          size: MyExtensions.screenLengthShorter(context) *
+                              operationButtonIconSizePercentage,
+                        ),
+                      ),
+                    ]),
+                    ElevatedButton(
+                        onPressed: () {
+                          model.resetJu();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: appAccentColor,
+                          foregroundColor: Colors.white,
+                        ),
+                        child: Text("重置",
+                            style: TextStyle(
+                                fontSize:
+                                    MyExtensions.screenLengthShorter(context) *
+                                        operationButtonTextSizePercentage))),
+                  ]);
             }
           },
         ),

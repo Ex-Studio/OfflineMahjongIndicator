@@ -27,6 +27,11 @@ class MyModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  void resetJu() {
+    currentJu = MahjongJu.dong1;
+    notifyListeners();
+  }
+
   MahjongChang currentChang = 0;
 
   void goPreviousChang() {
@@ -38,6 +43,11 @@ class MyModel extends ChangeNotifier {
 
   void goNextChang() {
     currentChang += 1;
+    notifyListeners();
+  }
+
+  void resetChang() {
+    currentChang = 0;
     notifyListeners();
   }
 
