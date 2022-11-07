@@ -10,6 +10,7 @@ const double operationButtonTextSizePercentage = 0.06;
 const double operationButtonIconSizePercentage = 0.04;
 
 const double debugTextSizePercentage = 0.04;
+const double paddingSizePercentage = 0.01;
 
 // [colors]
 

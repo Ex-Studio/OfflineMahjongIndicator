@@ -72,25 +72,52 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
             corner: MyCornerEnum.topLeft,
             rotationQuarterTurns: 1,
             child: currentJuChangText),
-        // 调试信息
-        MyCornerWidget(
-            padding: MyExtensions.screenLengthShorter(context) *
-                2.0 *
-                cornerSmallTextSizePercentage,
-            corner: MyCornerEnum.topLeft,
-            child: Text(debugInfo,
-                style: TextStyle(
-                    fontSize: MyExtensions.screenLengthShorter(context) *
-                        debugTextSizePercentage))),
-        MyCornerWidget(
-            padding: MyExtensions.screenLengthShorter(context) *
-                2.0 *
-                cornerSmallTextSizePercentage,
-            corner: MyCornerEnum.bottomLeft,
-            child: Text(usageInfo,
-                style: TextStyle(
-                    fontSize: MyExtensions.screenLengthShorter(context) *
-                        debugTextSizePercentage))),
+
+        // 上方的重置按钮
+        Consumer<MyModel>(
+          builder: (context, model, child) {
+            if (model.isOperating) {
+              return MyRoundCenterWidget(
+                  position: MyRoundEnum.topCenter,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                          onPressed: () {
+                            model.resetJu();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: appAccentColor,
+                            foregroundColor: Colors.white,
+                          ),
+                          child: Text("重置局",
+                              style: TextStyle(
+                                  fontSize: MyExtensions.screenLengthShorter(
+                                          context) *
+                                      operationButtonTextSizePercentage))),
+                      SizedBox(
+                          width: MyExtensions.screenLengthShorter(context) *
+                              paddingSizePercentage),
+                      ElevatedButton(
+                          onPressed: () {
+                            model.resetChang();
+                          },
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: appAccentColor,
+                            foregroundColor: Colors.white,
+                          ),
+                          child: Text("重置场",
+                              style: TextStyle(
+                                  fontSize: MyExtensions.screenLengthShorter(
+                                          context) *
+                                      operationButtonTextSizePercentage)))
+                    ],
+                  ));
+            } else {
+              return SizedBox.shrink();
+            }
+          },
+        ),
         // 下方重新开始按钮
         Consumer<MyModel>(
           builder: (context, model, child) {
@@ -115,6 +142,25 @@ ${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
             }
           },
         ),
+        // 调试信息
+        MyCornerWidget(
+            padding: MyExtensions.screenLengthShorter(context) *
+                2.0 *
+                cornerSmallTextSizePercentage,
+            corner: MyCornerEnum.topLeft,
+            child: Text(debugInfo,
+                style: TextStyle(
+                    fontSize: MyExtensions.screenLengthShorter(context) *
+                        debugTextSizePercentage))),
+        MyCornerWidget(
+            padding: MyExtensions.screenLengthShorter(context) *
+                2.0 *
+                cornerSmallTextSizePercentage,
+            corner: MyCornerEnum.bottomLeft,
+            child: Text(usageInfo,
+                style: TextStyle(
+                    fontSize: MyExtensions.screenLengthShorter(context) *
+                        debugTextSizePercentage))),
       ],
     );
   }
@@ -153,19 +199,6 @@ class CenterView extends StatelessWidget {
                   Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                    ElevatedButton(
-                        onPressed: () {
-                          model.resetChang();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: appAccentColor,
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Text("重置",
-                            style: TextStyle(
-                                fontSize:
-                                    MyExtensions.screenLengthShorter(context) *
-                                        operationButtonTextSizePercentage))),
                     // 本场一行
                     Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       ElevatedButton(
@@ -344,19 +377,6 @@ class CenterView extends StatelessWidget {
                         ),
                       ),
                     ]),
-                    ElevatedButton(
-                        onPressed: () {
-                          model.resetJu();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: appAccentColor,
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Text("重置",
-                            style: TextStyle(
-                                fontSize:
-                                    MyExtensions.screenLengthShorter(context) *
-                                        operationButtonTextSizePercentage))),
                   ]);
             }
           },
