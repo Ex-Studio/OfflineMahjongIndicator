@@ -1,12 +1,19 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'package:flutter/cupertino.dart';
+
 import 'package:playground221107/extension.dart';
+import 'package:playground221107/model.dart';
 
 void main() {
   runApp(
     MaterialApp(
       home: Scaffold(
-        body: ContextView(),
+        body: ChangeNotifierProvider(
+          create: (context) => YxjGameModel(),
+          child: ContextView(),
+        ),
       ),
       debugShowCheckedModeBanner: false,
     ),
@@ -18,7 +25,7 @@ class ContextView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final String debugInfo = """
+    String debugInfo = """
 [DEBUG]
 ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
 """;
@@ -60,7 +67,7 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
 }
 
 class YxjCenterView extends StatelessWidget {
-  const YxjCenterView({super.key});
+  YxjCenterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -78,20 +85,32 @@ class YxjCenterView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 RotatedBox(quarterTurns: 1, child: Text("北")),
-                ElevatedButton(
-                  onPressed: () {
-                    debugPrint("pressed");
+                Consumer<YxjGameModel>(
+                  builder: (context, model, child) {
+                    return ElevatedButton(
+                      onPressed: () {
+                        debugPrint("pressed lock button");
+                        if (!model.isOperating) {
+                          model.startOperating();
+                        } else {
+                          model.endOperating();
+                        }
+                      },
+                      style: ElevatedButton.styleFrom(
+                        // shape: CircleBorder(),
+                        padding: EdgeInsets.all(
+                            YxjExtensions.screenLengthShorter(context) * 0.04),
+                        backgroundColor: Colors.blue,
+                        foregroundColor: Colors.white,
+                      ),
+                      child: Icon(
+                        model.isOperating
+                            ? CupertinoIcons.play
+                            : CupertinoIcons.lock,
+                        size: YxjExtensions.screenLengthShorter(context) * 0.10,
+                      ),
+                    );
                   },
-                  style: ElevatedButton.styleFrom(
-                    shape: CircleBorder(),
-                    padding: EdgeInsets.all(16),
-                    backgroundColor: Colors.blue, // <-- Button color
-                    foregroundColor: Colors.white, // <-- Splash color
-                  ),
-                  child: Icon(
-                    CupertinoIcons.lock,
-                    size: YxjExtensions.screenLengthShorter(context) * 0.1,
-                  ),
                 ),
                 RotatedBox(quarterTurns: 3, child: Text("南")),
               ],
