@@ -12,7 +12,7 @@ void main() {
     MaterialApp(
       home: Scaffold(
         body: ChangeNotifierProvider(
-          create: (context) => YxjGameModel(),
+          create: (context) => MyModel(),
           child: ContextView(),
         ),
       ),
@@ -28,7 +28,7 @@ class ContextView extends StatelessWidget {
   Widget build(BuildContext context) {
     String debugInfo = """
 [DEBUG]
-${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
+${MyExtensions.screenWidth(context)}x${MyExtensions.screenHeight(context)}
 """;
 
     String usageInfo = """
@@ -37,7 +37,7 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
 长按解锁按键进行操作
 """;
 
-    final currentJuChangText = Consumer<YxjGameModel>(
+    final currentJuChangText = Consumer<MyModel>(
       builder: (context, model, child) {
         return Text("${model.currentJu.description()} ꘖx${model.currentChang}");
       },
@@ -45,27 +45,29 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
 
     return Stack(
       children: [
-        YxjCornerWidget(
-            padding: 40.0, corner: YxjCorner.topLeft, child: Text(debugInfo)),
-        YxjCornerWidget(
+        MyCornerWidget(
             padding: 40.0,
-            corner: YxjCorner.bottomLeft,
+            corner: MyCornerEnum.topLeft,
+            child: Text(debugInfo)),
+        MyCornerWidget(
+            padding: 40.0,
+            corner: MyCornerEnum.bottomLeft,
             child: Text(usageInfo)),
-        YxjCenterView(),
-        YxjCornerWidget(
-            corner: YxjCorner.bottomLeft,
+        CenterView(),
+        MyCornerWidget(
+            corner: MyCornerEnum.bottomLeft,
             rotationQuarterTurns: 0,
             child: currentJuChangText),
-        YxjCornerWidget(
-            corner: YxjCorner.bottomRight,
+        MyCornerWidget(
+            corner: MyCornerEnum.bottomRight,
             rotationQuarterTurns: 3,
             child: currentJuChangText),
-        YxjCornerWidget(
-            corner: YxjCorner.topRight,
+        MyCornerWidget(
+            corner: MyCornerEnum.topRight,
             rotationQuarterTurns: 2,
             child: currentJuChangText),
-        YxjCornerWidget(
-            corner: YxjCorner.topLeft,
+        MyCornerWidget(
+            corner: MyCornerEnum.topLeft,
             rotationQuarterTurns: 1,
             child: currentJuChangText),
       ],
@@ -73,8 +75,8 @@ ${YxjExtensions.screenWidth(context)}x${YxjExtensions.screenHeight(context)}
   }
 }
 
-class YxjCenterView extends StatelessWidget {
-  YxjCenterView({super.key});
+class CenterView extends StatelessWidget {
+  CenterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -92,7 +94,7 @@ class YxjCenterView extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 RotatedBox(quarterTurns: 1, child: Text("北")),
-                Consumer<YxjGameModel>(
+                Consumer<MyModel>(
                   builder: (context, model, child) {
                     return ElevatedButton(
                       onPressed: () {
@@ -107,7 +109,7 @@ class YxjCenterView extends StatelessWidget {
                       style: ElevatedButton.styleFrom(
                         // shape: CircleBorder(),
                         padding: EdgeInsets.all(
-                            YxjExtensions.screenLengthShorter(context) * 0.04),
+                            MyExtensions.screenLengthShorter(context) * 0.04),
                         backgroundColor: Colors.blue,
                         foregroundColor: Colors.white,
                       ),
@@ -115,7 +117,7 @@ class YxjCenterView extends StatelessWidget {
                         model.isOperating
                             ? CupertinoIcons.play
                             : CupertinoIcons.lock,
-                        size: YxjExtensions.screenLengthShorter(context) * 0.10,
+                        size: MyExtensions.screenLengthShorter(context) * 0.10,
                       ),
                     );
                   },

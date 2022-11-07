@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 
-enum YxjCorner { bottomLeft, bottomRight, topLeft, topRight }
+enum MyCornerEnum { bottomLeft, bottomRight, topLeft, topRight }
 
 // use it in a `Stack`
-class YxjCornerWidget extends StatelessWidget {
-  final YxjCorner corner;
+class MyCornerWidget extends StatelessWidget {
+  final MyCornerEnum corner;
   final double padding;
   final int rotationQuarterTurns;
   final Widget child;
 
-  YxjCornerWidget({
+  MyCornerWidget({
     super.key,
-    this.corner = YxjCorner.topLeft,
+    this.corner = MyCornerEnum.topLeft,
     this.padding = 10.0,
     this.rotationQuarterTurns = 0,
     required this.child,
@@ -20,25 +20,25 @@ class YxjCornerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (corner) {
-      case YxjCorner.bottomLeft:
+      case MyCornerEnum.bottomLeft:
         return Positioned(
             bottom: padding,
             left: padding,
             child:
                 RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
-      case YxjCorner.bottomRight:
+      case MyCornerEnum.bottomRight:
         return Positioned(
             bottom: padding,
             right: padding,
             child:
                 RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
-      case YxjCorner.topLeft:
+      case MyCornerEnum.topLeft:
         return Positioned(
             top: padding,
             left: padding,
             child:
                 RotatedBox(quarterTurns: rotationQuarterTurns, child: child));
-      case YxjCorner.topRight:
+      case MyCornerEnum.topRight:
         return Positioned(
             top: padding,
             right: padding,

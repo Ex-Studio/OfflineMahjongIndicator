@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class YxjGameModel extends ChangeNotifier {
+class MyModel extends ChangeNotifier {
   // [properties]
 
   bool isOperating = false;
