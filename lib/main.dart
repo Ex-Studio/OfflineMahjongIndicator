@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 import 'package:playground221107/_extensions.dart';
@@ -194,52 +194,7 @@ class CenterView extends StatelessWidget {
                 ],
               );
             } else {
-              return
-                  // 操作界面最中间按钮上方
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    // 本场一行
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          model.goPreviousChang();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          backgroundColor: appAccentColor,
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Icon(
-                          CupertinoIcons.minus,
-                          size: MyExtensions.screenLengthShorter(context) *
-                              operationButtonIconSizePercentage,
-                        ),
-                      ),
-                      Text(
-                        "本场",
-                        style: TextStyle(
-                            fontSize:
-                                MyExtensions.screenLengthShorter(context) *
-                                    operationButtonTextSizePercentage),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          model.goNextChang();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          backgroundColor: appAccentColor,
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Icon(
-                          CupertinoIcons.add,
-                          size: MyExtensions.screenLengthShorter(context) *
-                              operationButtonIconSizePercentage,
-                        ),
-                      ),
-                    ]),
-                  ]);
+              return SizedBox.shrink();
             }
           },
         ),
@@ -262,7 +217,22 @@ class CenterView extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return SizedBox.shrink();
+                  return MyVerticleAddMinusWidget(
+                    iconSize: MyExtensions.screenLengthShorter(context) *
+                        operationButtonIconSizePercentage,
+                    buttonColor: appAccentColor,
+                    child: Text("局",
+                        style: TextStyle(
+                            fontSize:
+                                MyExtensions.screenLengthShorter(context) *
+                                    operationButtonTextSizePercentage)),
+                    addCallback: () {
+                      model.goNextJu();
+                    },
+                    minusCallback: () {
+                      model.goPreviousJu();
+                    },
+                  );
                 }
               },
             ),
@@ -310,7 +280,22 @@ class CenterView extends StatelessWidget {
                     ],
                   );
                 } else {
-                  return SizedBox.shrink();
+                  return MyVerticleAddMinusWidget(
+                    iconSize: MyExtensions.screenLengthShorter(context) *
+                        operationButtonIconSizePercentage,
+                    buttonColor: appAccentColor,
+                    child: Text("场",
+                        style: TextStyle(
+                            fontSize:
+                                MyExtensions.screenLengthShorter(context) *
+                                    operationButtonTextSizePercentage)),
+                    addCallback: () {
+                      model.goNextChang();
+                    },
+                    minusCallback: () {
+                      model.goPreviousChang();
+                    },
+                  );
                 }
               },
             ),
@@ -332,52 +317,7 @@ class CenterView extends StatelessWidget {
                 ],
               );
             } else {
-              return
-                  // 操作界面最中间按钮下方
-                  Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                    // 局一行
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      ElevatedButton(
-                        onPressed: () {
-                          model.goPreviousJu();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          backgroundColor: appAccentColor,
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Icon(
-                          CupertinoIcons.minus,
-                          size: MyExtensions.screenLengthShorter(context) *
-                              operationButtonIconSizePercentage,
-                        ),
-                      ),
-                      Text(
-                        "局",
-                        style: TextStyle(
-                            fontSize:
-                                MyExtensions.screenLengthShorter(context) *
-                                    operationButtonTextSizePercentage),
-                      ),
-                      ElevatedButton(
-                        onPressed: () {
-                          model.goNextJu();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          shape: CircleBorder(),
-                          backgroundColor: appAccentColor,
-                          foregroundColor: Colors.white,
-                        ),
-                        child: Icon(
-                          CupertinoIcons.add,
-                          size: MyExtensions.screenLengthShorter(context) *
-                              operationButtonIconSizePercentage,
-                        ),
-                      ),
-                    ]),
-                  ]);
+              return SizedBox.shrink();
             }
           },
         ),

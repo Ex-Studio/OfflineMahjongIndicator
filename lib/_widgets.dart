@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 enum MyCornerEnum { bottomLeft, bottomRight, topLeft, topRight }
 
@@ -86,5 +87,54 @@ class MyRoundCenterWidget extends StatelessWidget {
           child: Align(alignment: Alignment.centerRight, child: child),
         );
     }
+  }
+}
+
+class MyVerticleAddMinusWidget extends StatelessWidget {
+  double iconSize;
+  Color buttonColor;
+
+  VoidCallback addCallback;
+  VoidCallback minusCallback;
+  Widget child;
+
+  MyVerticleAddMinusWidget({
+    super.key,
+    this.iconSize = 40.0,
+    this.buttonColor = Colors.lightBlue,
+    required this.addCallback,
+    required this.minusCallback,
+    required this.child,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(mainAxisAlignment: MainAxisAlignment.center, children: [
+      ElevatedButton(
+        onPressed: () {
+          debugPrint("pressed add");
+          addCallback();
+        },
+        style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
+          backgroundColor: buttonColor,
+          foregroundColor: Colors.white,
+        ),
+        child: Icon(CupertinoIcons.add, size: iconSize),
+      ),
+      child,
+      ElevatedButton(
+        onPressed: () {
+          debugPrint("pressed minus");
+          minusCallback();
+        },
+        style: ElevatedButton.styleFrom(
+          shape: CircleBorder(),
+          backgroundColor: buttonColor,
+          foregroundColor: Colors.white,
+        ),
+        child: Icon(CupertinoIcons.minus, size: iconSize),
+      ),
+    ]);
   }
 }
