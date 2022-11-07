@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:playground221107/extension.dart';
+import 'extension.dart';
 
 void main() {
   runApp(
@@ -18,7 +20,33 @@ class ContextView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: MyView(),
+      child: HomePage(),
+    );
+  }
+}
+
+class HomePage extends StatelessWidget {
+  const HomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(
+      children: [
+        MyView(),
+        Positioned(
+          bottom: 10.0,
+          right: 10.0,
+          child: Icon(
+            CupertinoIcons.lock,
+            size: Extension.screenLengthShorter(context) * 0.1,
+          ),
+        ),
+        Positioned(
+            left: 10.0,
+            top: 10.0,
+            child: Text(
+                "[DEBUG] ${Extension.screenWidth(context)}x${Extension.screenHeight(context)}"))
+      ],
     );
   }
 }
