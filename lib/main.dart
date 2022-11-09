@@ -1,5 +1,7 @@
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_html/flutter_html.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -91,7 +93,13 @@ class ContextView extends StatelessWidget {
                 // 信息按钮
                 MyInfoButtonWidget(
                   infoTitle: const Text("线下日麻指示器"),
-                  infoContent: const Text(appInfo),
+                  infoContent: Html(
+                    data: appInfo,
+                    renderNewlines: true,
+                    onLinkTap: (url) {
+                      launchUrl(Uri.parse(url));
+                    },
+                  ),
                   buttonContent: Icon(
                     CupertinoIcons.info_circle,
                     size: MyExtensions.screenLengthShorter(context,

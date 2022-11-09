@@ -27,8 +27,9 @@ const List<String> juCharacters = ["東", "南", "西", "北"];
 const String usageInfo = """将东朝亲家横向放置
 长按解锁按键进行操作""";
 
-const String appInfo = """开发者
+const String appInfo = """
+开发者
 Yang-Xijie@GitHub
-https://github.com/Yang-Xijie
+<a href="https://github.com/Yang-Xijie">https://github.com/Yang-Xijie</a>
 仓库地址
-https://github.com/Ex-Studio/OfflineMahjongIndicator""";
+<a href="https://github.com/Ex-Studio/OfflineMahjongIndicator">https://github.com/Ex-Studio/OfflineMahjongIndicator</a>""";

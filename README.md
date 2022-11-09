@@ -12,15 +12,15 @@ A Flutter app for mobile.
 ## Development
 
 ```
-flutter run -d mac
+flutter run -d mac --no-sound-null-safety
 ```
 
 ```
-flutter run -d chrome --web-renderer html
+flutter run -d chrome --web-renderer html --no-sound-null-safety
 ```
 
 ## Deployment
 
 ```
-flutter build web --web-renderer html
+flutter build web --web-renderer html --no-sound-null-safety
 ```
