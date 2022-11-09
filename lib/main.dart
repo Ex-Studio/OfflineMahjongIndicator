@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
@@ -5,18 +8,13 @@ import 'dart:io' show Platform;
 import 'package:fullscreen/fullscreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-
 import 'package:offlinemahjongindicator/_extensions.dart';
 import 'package:offlinemahjongindicator/_models.dart';
 import 'package:offlinemahjongindicator/_widgets.dart';
 import 'package:offlinemahjongindicator/_constants.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-
-// running on the web
+  // running on the web
   if (kDebugMode || kIsWeb) {
     runApp(MaterialApp(
       theme: ThemeData(primaryColor: Colors.white),
@@ -30,6 +28,7 @@ void main() {
       // showSemanticsDebugger: true,
     ));
   } else if (Platform.isAndroid || Platform.isIOS) {
+    WidgetsFlutterBinding.ensureInitialized();
     SystemChrome.setPreferredOrientations([
       DeviceOrientation.landscapeLeft,
       DeviceOrientation.landscapeRight,
@@ -45,7 +44,13 @@ void main() {
         ),
       ));
     });
-  } else {}
+  } else {
+    runApp(const MaterialApp(
+      home: Scaffold(
+        body: Center(child: Text("尚未支持的平台")),
+      ),
+    ));
+  }
 }
 
 class ContextView extends StatelessWidget {

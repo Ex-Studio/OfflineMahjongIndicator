@@ -13,7 +13,6 @@
 
 ## Deployment
 
-- android要怎么设置把通知栏隐去
 - 在appInfoz中添加版本号
 - 添加应用图标
 - 给应用一个中文名

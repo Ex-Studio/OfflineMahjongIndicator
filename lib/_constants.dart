@@ -30,4 +30,6 @@ const String usageInfo = """将「東」朝向亲家放置
 const String appInfo = """开发者
 https://github.com/Yang-Xijie
 代码仓库
-https://github.com/Ex-Studio/OfflineMahjongIndicator""";
+https://github.com/Ex-Studio/OfflineMahjongIndicator
+支持链接
+https://yang-xijie.github.io/ABOUT/support""";
