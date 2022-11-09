@@ -148,15 +148,17 @@ class ContextView extends StatelessWidget {
             padding: MyExtensions.screenLengthShorter(context,
                 percentage: defaultPaddingSizePercentage),
             child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                SizedBox(
-                    width: MyExtensions.screenWidth(context, percentage: 0.75)),
                 Icon(
                   CupertinoIcons.question_circle,
                   size: MyExtensions.screenLengthShorter(context,
                       percentage: defaultIconSizePercentage),
-                )
+                ),
+                SizedBox(
+                    width: MyExtensions.screenWidth(context,
+                        percentage: defaultTextSizePercentage +
+                            defaultPaddingSizePercentage)),
               ],
             )),
         MyCornerWidget(
