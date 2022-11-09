@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 // [Views]
 // [Data]
 import 'package:offlinemahjongindicator/Constants/my.dart';
+import 'package:offlinemahjongindicator/version.dart';
 // [Auxiliary]
 import 'package:offlinemahjongindicator/Extensions/my.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -22,7 +23,7 @@ class InfoButtonView extends StatelessWidget {
           builder: (BuildContext context) {
             Widget alertDialog = CupertinoAlertDialog(
               title: const Text("线下日麻指示器"),
-              content: const SizedBox.shrink(), // TODO add version here
+              content: const Text("v$version"),
               actions: <CupertinoDialogAction>[
                 CupertinoDialogAction(
                   onPressed: () {
