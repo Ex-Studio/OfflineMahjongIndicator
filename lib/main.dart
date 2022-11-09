@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -8,6 +8,13 @@ import 'package:offlinemahjongindicator/_extensions.dart';
 import 'package:offlinemahjongindicator/_models.dart';
 import 'package:offlinemahjongindicator/_widgets.dart';
 import 'package:offlinemahjongindicator/_constants.dart';
+
+void configure() {
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]);
+}
 
 void main() {
   runApp(
@@ -28,6 +35,8 @@ class ContextView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    configure();
+
     final currentJuChangText = Consumer<MyModel>(
       builder: (context, model, child) {
         return Text(
@@ -177,13 +186,7 @@ class ContextView extends StatelessWidget {
       ],
     );
 
-    if (kDebugMode) {
-      // great for debugging
-      return contextView;
-    } else {
-      // great for mobile phone
-      return RotatedBox(quarterTurns: 3, child: contextView);
-    }
+    return contextView;
   }
 }
 
