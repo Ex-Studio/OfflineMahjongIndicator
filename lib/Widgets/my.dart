@@ -1,5 +1,10 @@
+// [Widgets]
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+// [Views]
+// [Data]
+// [Auxiliary]
+// ----------------
 
 enum MyCornerEnum { bottomLeft, bottomRight, topLeft, topRight }
 
@@ -170,7 +175,6 @@ class MyInfoButtonWidget extends StatelessWidget {
                 ),
               ],
             );
-
             return alertDialog;
           },
         );

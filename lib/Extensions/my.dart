@@ -1,4 +1,9 @@
+// [Widgets]
 import 'package:flutter/material.dart';
+// [Views]
+// [Data]
+// [Auxiliary]
+// ----------------
 
 import 'dart:math';
 
