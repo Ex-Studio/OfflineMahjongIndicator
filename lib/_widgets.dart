@@ -10,7 +10,7 @@ class MyCornerWidget extends StatelessWidget {
   final int rotationQuarterTurns;
   final Widget child;
 
-  MyCornerWidget({
+  const MyCornerWidget({
     super.key,
     required this.corner,
     required this.padding,
@@ -57,7 +57,7 @@ class MyEdgeCenterWidget extends StatelessWidget {
   final double padding;
   final Widget child;
 
-  MyEdgeCenterWidget({
+  const MyEdgeCenterWidget({
     super.key,
     required this.position,
     required this.padding,
@@ -92,13 +92,13 @@ class MyEdgeCenterWidget extends StatelessWidget {
 }
 
 class MyVerticleAddMinusWidget extends StatelessWidget {
-  double iconSize;
-  Color buttonColor;
-  VoidCallback addCallback;
-  VoidCallback minusCallback;
-  Widget child;
+  final double iconSize;
+  final Color buttonColor;
+  final VoidCallback addCallback;
+  final VoidCallback minusCallback;
+  final Widget child;
 
-  MyVerticleAddMinusWidget({
+  const MyVerticleAddMinusWidget({
     super.key,
     required this.iconSize,
     required this.buttonColor,
@@ -116,7 +116,7 @@ class MyVerticleAddMinusWidget extends StatelessWidget {
           addCallback();
         },
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           backgroundColor: buttonColor,
           foregroundColor: Colors.white,
         ),
@@ -129,7 +129,7 @@ class MyVerticleAddMinusWidget extends StatelessWidget {
           minusCallback();
         },
         style: ElevatedButton.styleFrom(
-          shape: CircleBorder(),
+          shape: const CircleBorder(),
           backgroundColor: buttonColor,
           foregroundColor: Colors.white,
         ),
@@ -140,11 +140,11 @@ class MyVerticleAddMinusWidget extends StatelessWidget {
 }
 
 class MyInfoButtonWidget extends StatelessWidget {
-  Widget infoTitle;
-  Widget infoContent;
-  Widget buttonContent;
+  final Widget infoTitle;
+  final Widget infoContent;
+  final Widget buttonContent;
 
-  MyInfoButtonWidget({
+  const MyInfoButtonWidget({
     super.key,
     required this.infoTitle,
     required this.infoContent,
@@ -179,12 +179,12 @@ class MyInfoButtonWidget extends StatelessWidget {
 }
 
 class MyDestructiveButtonWidget extends StatelessWidget {
-  Widget infoTitle;
-  Widget infoContent;
-  Widget buttonContent;
-  VoidCallback destructiveCallback;
+  final Widget infoTitle;
+  final Widget infoContent;
+  final Widget buttonContent;
+  final VoidCallback destructiveCallback;
 
-  MyDestructiveButtonWidget({
+  const MyDestructiveButtonWidget({
     super.key,
     required this.infoTitle,
     required this.infoContent,

@@ -15,7 +15,7 @@ void main() {
       home: Scaffold(
         body: ChangeNotifierProvider(
           create: (context) => MyModel(),
-          child: ContextView(),
+          child: const ContextView(),
         ),
       ),
       debugShowCheckedModeBanner: false,
@@ -24,7 +24,7 @@ void main() {
 }
 
 class ContextView extends StatelessWidget {
-  ContextView({super.key});
+  const ContextView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +42,7 @@ class ContextView extends StatelessWidget {
     Widget contextView = Stack(
       children: [
         // 中间的解锁按钮和东南西北
-        CenterView(),
+        const CenterView(),
         // 四周的局数和本场数
         MyCornerWidget(
             corner: MyCornerEnum.bottomLeft,
@@ -80,8 +80,8 @@ class ContextView extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       MyDestructiveButtonWidget(
-                        infoTitle: Text("重置局数"),
-                        infoContent: Text("重置局数会将当前局数置为東1局"),
+                        infoTitle: const Text("重置局数"),
+                        infoContent: const Text("重置局数会将当前局数置为東1局"),
                         buttonContent: Text("重置局数",
                             style: TextStyle(
                                 fontSize: MyExtensions.screenLengthShorter(
@@ -95,8 +95,8 @@ class ContextView extends StatelessWidget {
                           width: MyExtensions.screenLengthShorter(context,
                               percentage: defaultPaddingSizePercentage)),
                       MyDestructiveButtonWidget(
-                        infoTitle: Text("重置场数"),
-                        infoContent: Text("重置场数会将当前本场数置为0"),
+                        infoTitle: const Text("重置场数"),
+                        infoContent: const Text("重置场数会将当前本场数置为0"),
                         buttonContent: Text("重置场数",
                             style: TextStyle(
                                 fontSize: MyExtensions.screenLengthShorter(
@@ -109,7 +109,7 @@ class ContextView extends StatelessWidget {
                     ],
                   ));
             } else {
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             }
           },
         ),
@@ -122,8 +122,8 @@ class ContextView extends StatelessWidget {
                   padding: MyExtensions.screenLengthShorter(context,
                       percentage: defaultPaddingSizePercentage),
                   child: MyDestructiveButtonWidget(
-                    infoTitle: Text("确认重新开始"),
-                    infoContent: Text("重新开始会将当前进度置为 東1局0本场"),
+                    infoTitle: const Text("确认重新开始"),
+                    infoContent: const Text("重新开始会将当前进度置为 東1局0本场"),
                     buttonContent: Text("重新开始",
                         style: TextStyle(
                             fontSize: MyExtensions.screenLengthShorter(context,
@@ -133,7 +133,7 @@ class ContextView extends StatelessWidget {
                     },
                   ));
             } else {
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             }
           },
         ),
@@ -147,8 +147,8 @@ class ContextView extends StatelessWidget {
               children: [
                 // 信息按钮
                 MyInfoButtonWidget(
-                  infoTitle: Text("线下日麻指示器"),
-                  infoContent: Text(appInfo),
+                  infoTitle: const Text("线下日麻指示器"),
+                  infoContent: const Text(appInfo),
                   buttonContent: Icon(
                     CupertinoIcons.info_circle,
                     size: MyExtensions.screenLengthShorter(context,
@@ -160,8 +160,8 @@ class ContextView extends StatelessWidget {
                         percentage: defaultPaddingSizePercentage)),
                 // 帮助按钮
                 MyInfoButtonWidget(
-                  infoTitle: Text("使用帮助"),
-                  infoContent: Text(usageInfo),
+                  infoTitle: const Text("使用帮助"),
+                  infoContent: const Text(usageInfo),
                   buttonContent: Icon(
                     CupertinoIcons.question_circle,
                     size: MyExtensions.screenLengthShorter(context,
@@ -176,16 +176,19 @@ class ContextView extends StatelessWidget {
             )),
       ],
     );
+
     if (kDebugMode) {
+      // great for debugging
       return contextView;
     } else {
+      // great for mobile phone
       return RotatedBox(quarterTurns: 3, child: contextView);
     }
   }
 }
 
 class CenterView extends StatelessWidget {
-  CenterView({super.key});
+  const CenterView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -212,7 +215,7 @@ class CenterView extends StatelessWidget {
                 ],
               );
             } else {
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             }
           },
         ),
@@ -333,7 +336,7 @@ class CenterView extends StatelessWidget {
                 ],
               );
             } else {
-              return SizedBox.shrink();
+              return const SizedBox.shrink();
             }
           },
         ),
