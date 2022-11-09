@@ -15,7 +15,8 @@
 
 - （暂不推进）网页端全屏 https://stackoverflow.com/questions/64212775/how-to-enter-full-screen-mode-in-flutter-web-app  https://stackoverflow.com/questions/57937280/how-can-i-detect-if-my-flutter-app-is-running-in-the-web
 - 在appInfoz中添加版本号
-- 添加 GitHub CI 自动构建安卓APK放到GitHub的release里面
+- 添加应用图标
+- 给应用一个中文名
 
 ### Others
 
