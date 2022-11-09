@@ -21,8 +21,6 @@ jobs:
         flutter-version: '3.3.3'
     - name: Get dependencies
       run: flutter pub get
-    - name: Test project
-      run: flutter test
     - name: Build release project
       run: flutter build web --web-renderer html
     - name: Upload production-ready build files
