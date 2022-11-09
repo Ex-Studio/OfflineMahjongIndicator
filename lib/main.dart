@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -9,8 +10,13 @@ import 'package:offlinemahjongindicator/_widgets.dart';
 import 'package:offlinemahjongindicator/_constants.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
+  WidgetsFlutterBinding.ensureInitialized();
+
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.landscapeLeft,
+    DeviceOrientation.landscapeRight,
+  ]).then((_) {
+    runApp(MaterialApp(
       theme: ThemeData(primaryColor: Colors.white),
       home: Scaffold(
         body: ChangeNotifierProvider(
@@ -20,8 +26,8 @@ void main() {
       ),
       debugShowCheckedModeBanner: false,
       // showSemanticsDebugger: true,
-    ),
-  );
+    ));
+  });
 }
 
 class ContextView extends StatelessWidget {
@@ -297,7 +303,7 @@ class CenterView extends StatelessWidget {
                   ));
             } else {
               return MyDestructiveButtonWidget(
-                infoTitle: const Text("确认重新开始"),
+                infoTitle: const Text("重新开始"),
                 infoContent: const Text("重新开始会将当前进度置为 東1局0本场"),
                 buttonContent: Text("重新开始",
                     style: TextStyle(
