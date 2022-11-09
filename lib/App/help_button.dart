@@ -28,6 +28,7 @@ class HelpButtonView extends StatelessWidget {
                   onPressed: () {
                     Navigator.pop(context);
                   },
+                  isDefaultAction: true,
                   child: const Text("确认"),
                 ),
               ],
