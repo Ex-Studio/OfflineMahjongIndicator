@@ -27,6 +27,14 @@ class InfoButtonView extends StatelessWidget {
                 CupertinoDialogAction(
                   onPressed: () {
                     launchUrl(Uri.parse(
+                        "https://github.com/Ex-Studio/OfflineMahjongIndicator/releases"));
+                    Navigator.pop(context);
+                  },
+                  child: const Text("获取最新安卓应用"),
+                ),
+                CupertinoDialogAction(
+                  onPressed: () {
+                    launchUrl(Uri.parse(
                         "https://github.com/Ex-Studio/OfflineMahjongIndicator"));
                     Navigator.pop(context);
                   },

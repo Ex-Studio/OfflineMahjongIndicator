@@ -13,10 +13,8 @@
 
 ## Deployment
 
-- 在appInfoz中添加版本号
+- 在appInfo中添加版本号
 - 添加应用图标
 - 给应用一个中文名
 
 ### Others
-
-- 写README

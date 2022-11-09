@@ -29,7 +29,7 @@ class HelpButtonView extends StatelessWidget {
                     Navigator.pop(context);
                   },
                   isDefaultAction: true,
-                  child: const Text("确认"),
+                  child: const Text("关闭"),
                 ),
               ],
             );
