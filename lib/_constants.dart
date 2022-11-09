@@ -24,12 +24,10 @@ Color defaultColor = Colors.green.shade400;
 
 const List<String> juCharacters = ["東", "南", "西", "北"];
 
-const String usageInfo = """将东朝亲家横向放置
+const String usageInfo = """将「東」朝向亲家放置
 长按解锁按键进行操作""";
 
-const String appInfo = """
-开发者
-Yang-Xijie@GitHub
-<a href="https://github.com/Yang-Xijie">https://github.com/Yang-Xijie</a>
-仓库地址
-<a href="https://github.com/Ex-Studio/OfflineMahjongIndicator">https://github.com/Ex-Studio/OfflineMahjongIndicator</a>""";
+const String appInfo = """开发者
+https://github.com/Yang-Xijie
+代码仓库
+https://github.com/Ex-Studio/OfflineMahjongIndicator""";

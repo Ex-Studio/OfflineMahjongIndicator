@@ -36,13 +36,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.16.0"
-  csslib:
-    dependency: transitive
-    description:
-      name: csslib
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.15.0"
   cupertino_icons:
     dependency: "direct main"
     description:
@@ -62,13 +55,6 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  flutter_html:
-    dependency: "direct main"
-    description:
-      name: flutter_html
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.8.2"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -86,13 +72,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
-  html:
-    dependency: transitive
+  fullscreen:
+    dependency: "direct main"
     description:
-      name: html
+      name: fullscreen
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.13.4+2"
+    version: "1.0.3"
   js:
     dependency: transitive
     description:
@@ -259,13 +245,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
-  utf:
-    dependency: transitive
-    description:
-      name: utf
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.9.0+5"
   vector_math:
     dependency: transitive
     description:

@@ -4,7 +4,6 @@
 
 - 长按解锁的动画（转一圈然后解锁）
 - 下方的alert 随时间消失 一打开可以放一些说明文字 到头了可以放提示
-- info界面添加点击打开链接
 
 ### Others
 
@@ -15,7 +14,6 @@
 ## Deployment
 
 - android要怎么设置把通知栏隐去
-- 默认横向 https://api.flutter.dev/flutter/services/SystemChrome-class.html
 - 在appInfoz中添加版本号
 - 添加应用图标
 - 给应用一个中文名

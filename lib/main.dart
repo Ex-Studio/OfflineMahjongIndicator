@@ -1,6 +1,8 @@
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter_html/flutter_html.dart';
+import 'package:flutter/foundation.dart' show kDebugMode, kIsWeb;
+import 'dart:io' show Platform;
+import 'package:fullscreen/fullscreen.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import 'package:flutter/material.dart';
@@ -14,10 +16,8 @@ import 'package:offlinemahjongindicator/_constants.dart';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setPreferredOrientations([
-    DeviceOrientation.landscapeLeft,
-    DeviceOrientation.landscapeRight,
-  ]).then((_) {
+// running on the web
+  if (kDebugMode || kIsWeb) {
     runApp(MaterialApp(
       theme: ThemeData(primaryColor: Colors.white),
       home: Scaffold(
@@ -29,7 +29,23 @@ void main() {
       debugShowCheckedModeBanner: false,
       // showSemanticsDebugger: true,
     ));
-  });
+  } else if (Platform.isAndroid || Platform.isIOS) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeLeft,
+      DeviceOrientation.landscapeRight,
+    ]).then((_) {
+      FullScreen.enterFullScreen(FullScreenMode.EMERSIVE_STICKY);
+      runApp(MaterialApp(
+        theme: ThemeData(primaryColor: Colors.white),
+        home: Scaffold(
+          body: ChangeNotifierProvider(
+            create: (context) => MyModel(),
+            child: const ContextView(),
+          ),
+        ),
+      ));
+    });
+  } else {}
 }
 
 class ContextView extends StatelessWidget {
@@ -93,13 +109,7 @@ class ContextView extends StatelessWidget {
                 // 信息按钮
                 MyInfoButtonWidget(
                   infoTitle: const Text("线下日麻指示器"),
-                  infoContent: Html(
-                    data: appInfo,
-                    renderNewlines: true,
-                    onLinkTap: (url) {
-                      launchUrl(Uri.parse(url));
-                    },
-                  ),
+                  infoContent: const Text(appInfo),
                   buttonContent: Icon(
                     CupertinoIcons.info_circle,
                     size: MyExtensions.screenLengthShorter(context,
