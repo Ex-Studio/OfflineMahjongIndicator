@@ -124,19 +124,17 @@ class ContextView extends StatelessWidget {
                   position: MyRoundEnum.bottomCenter,
                   padding: MyExtensions.screenLengthShorter(context,
                       percentage: defaultPaddingSizePercentage),
-                  child: ElevatedButton(
-                      onPressed: () {
-                        model.restartGame();
-                      },
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: defaultColor,
-                        foregroundColor: Colors.white,
-                      ),
-                      child: Text("重新开始",
-                          style: TextStyle(
-                              fontSize: MyExtensions.screenLengthShorter(
-                                  context,
-                                  percentage: operationTextSizePercentage)))));
+                  child: MyDestructiveButtonWidget(
+                    infoTitle: Text("确认重新开始"),
+                    infoContent: Text("重新开始会将当前进度置为 東1局0本场"),
+                    buttonContent: Text("重新开始",
+                        style: TextStyle(
+                            fontSize: MyExtensions.screenLengthShorter(context,
+                                percentage: operationTextSizePercentage))),
+                    destructiveCallback: () {
+                      model.restartGame();
+                    },
+                  ));
             } else {
               return SizedBox.shrink();
             }
@@ -327,7 +325,7 @@ class CenterView extends StatelessWidget {
                   RotatedBox(
                       quarterTurns: 0,
                       child: Text(
-                        "东",
+                        "東",
                         style: centerLargeTextStyle,
                       ))
                 ],

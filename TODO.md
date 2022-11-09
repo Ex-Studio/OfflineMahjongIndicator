@@ -3,7 +3,6 @@
 ## Development
 
 - 长按解锁的动画（转一圈然后解锁）
-- restartGame添加弹窗确认
 - 下方的alert 随时间消失 一打开可以放一些说明文字 到头了可以放提示
 
 ### Others

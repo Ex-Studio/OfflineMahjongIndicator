@@ -177,3 +177,55 @@ class MyInfoButtonWidget extends StatelessWidget {
     );
   }
 }
+
+class MyDestructiveButtonWidget extends StatelessWidget {
+  Widget infoTitle;
+  Widget infoContent;
+  Widget buttonContent;
+  VoidCallback destructiveCallback;
+
+  MyDestructiveButtonWidget({
+    super.key,
+    required this.infoTitle,
+    required this.infoContent,
+    required this.buttonContent,
+    required this.destructiveCallback,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return CupertinoButton(
+      onPressed: () {
+        showCupertinoDialog<void>(
+          context: context,
+          builder: (BuildContext context) => CupertinoAlertDialog(
+            title: infoTitle,
+            content: Center(child: infoContent),
+            actions: <CupertinoDialogAction>[
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                isDefaultAction: false,
+                isDestructiveAction: false,
+                child: const Text("取消"),
+              ),
+              CupertinoDialogAction(
+                onPressed: () {
+                  Navigator.pop(context);
+                  destructiveCallback();
+                },
+                isDefaultAction: true,
+                isDestructiveAction: true,
+                child: const Text("确认"),
+              ),
+            ],
+          ),
+        );
+      },
+      padding: EdgeInsets.zero, // remove padding
+      minSize: 0.0,
+      child: buttonContent, // remove padding
+    );
+  }
+}
