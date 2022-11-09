@@ -78,37 +78,43 @@ class ContextView extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ElevatedButton(
-                          onPressed: () {
-                            model.resetJu();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: defaultColor,
-                            foregroundColor: Colors.white,
-                          ),
-                          child: Text("重置局",
-                              style: TextStyle(
-                                  fontSize: MyExtensions.screenLengthShorter(
-                                      context,
-                                      percentage:
-                                          operationTextSizePercentage)))),
+                      MyEdgeCenterWidget(
+                          position: MyRoundEnum.topCenter,
+                          padding: MyExtensions.screenLengthShorter(context,
+                              percentage: defaultPaddingSizePercentage),
+                          child: MyDestructiveButtonWidget(
+                            infoTitle: Text("重置局数"),
+                            infoContent: Text("重置局数会将当前局数置为東1局"),
+                            buttonContent: Text("重置局数",
+                                style: TextStyle(
+                                    fontSize: MyExtensions.screenLengthShorter(
+                                        context,
+                                        percentage:
+                                            operationTextSizePercentage))),
+                            destructiveCallback: () {
+                              model.resetJu();
+                            },
+                          )),
                       SizedBox(
                           width: MyExtensions.screenLengthShorter(context,
                               percentage: defaultPaddingSizePercentage)),
-                      ElevatedButton(
-                          onPressed: () {
-                            model.resetChang();
-                          },
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: defaultColor,
-                            foregroundColor: Colors.white,
-                          ),
-                          child: Text("重置场",
-                              style: TextStyle(
-                                  fontSize: MyExtensions.screenLengthShorter(
-                                      context,
-                                      percentage:
-                                          operationTextSizePercentage))))
+                      MyEdgeCenterWidget(
+                          position: MyRoundEnum.topCenter,
+                          padding: MyExtensions.screenLengthShorter(context,
+                              percentage: defaultPaddingSizePercentage),
+                          child: MyDestructiveButtonWidget(
+                            infoTitle: Text("重置场数"),
+                            infoContent: Text("重置场数会将当前本场数置为0"),
+                            buttonContent: Text("重置场数",
+                                style: TextStyle(
+                                    fontSize: MyExtensions.screenLengthShorter(
+                                        context,
+                                        percentage:
+                                            operationTextSizePercentage))),
+                            destructiveCallback: () {
+                              model.resetChang();
+                            },
+                          )),
                     ],
                   ));
             } else {

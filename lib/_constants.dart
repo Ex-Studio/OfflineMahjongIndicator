@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 // [ui.sizes]
@@ -7,7 +8,7 @@ const double centerButtonPaddingSizePercentage = 0.05;
 
 const double centerLargeTextSizePercentage = 0.20;
 
-const double operationTextSizePercentage = 0.08;
+const double operationTextSizePercentage = 0.06;
 const double operationIconSizePercentage = 0.08;
 
 const double defaultPaddingSizePercentage = 0.03;
@@ -18,7 +19,7 @@ const double debugTextSizePercentage = 0.04;
 
 // [ui.colors]
 
-const Color defaultColor = Colors.lightBlue;
+Color defaultColor = Colors.green.shade400;
 
 // [values]
 
