@@ -14,7 +14,6 @@
 ## Deployment
 
 - 使用dart默认的警告 修正所有警告 尽量加入const
-- 通过web发布到自己的服务器上/导出apk
 - 添加 GitHub CI 自动发布网页版
 - 添加 GitHub CI 自动构建安卓APK放到GitHub的release里面
 
