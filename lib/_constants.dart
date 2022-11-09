@@ -22,8 +22,8 @@ const Color defaultColor = Colors.lightBlue;
 
 // [values]
 
-const String usageInfo = """
-[使用说明]
+String usageInfo = """
 将手机朝东家横向放置
 长按解锁按键进行操作
-""";
+"""
+    .trim();

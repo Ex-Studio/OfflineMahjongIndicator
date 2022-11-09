@@ -150,10 +150,14 @@ class ContextView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                Icon(
-                  CupertinoIcons.question_circle,
-                  size: MyExtensions.screenLengthShorter(context,
-                      percentage: defaultIconSizePercentage),
+                MyInfoButtonWidget(
+                  infoTitle: Text("使用帮助"),
+                  infoContent: Text(usageInfo),
+                  buttonContent: Icon(
+                    CupertinoIcons.question_circle,
+                    size: MyExtensions.screenLengthShorter(context,
+                        percentage: defaultIconSizePercentage),
+                  ),
                 ),
                 SizedBox(
                     width: MyExtensions.screenWidth(context,
@@ -161,15 +165,6 @@ class ContextView extends StatelessWidget {
                             defaultPaddingSizePercentage)),
               ],
             )),
-        MyCornerWidget(
-            // TODO 这个要删除 移到弹出的窗口中
-            padding: MyExtensions.screenLengthShorter(context,
-                percentage: defaultTextSizePercentage * 2),
-            corner: MyCornerEnum.bottomLeft,
-            child: Text(usageInfo,
-                style: TextStyle(
-                    fontSize: MyExtensions.screenLengthShorter(context,
-                        percentage: debugTextSizePercentage)))),
       ],
     );
   }
