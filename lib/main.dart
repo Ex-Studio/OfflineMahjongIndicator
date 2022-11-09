@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -38,7 +39,7 @@ class ContextView extends StatelessWidget {
       },
     );
 
-    return Stack(
+    Widget contextView = Stack(
       children: [
         // 中间的解锁按钮和东南西北
         CenterView(),
@@ -175,6 +176,11 @@ class ContextView extends StatelessWidget {
             )),
       ],
     );
+    if (kDebugMode) {
+      return contextView;
+    } else {
+      return RotatedBox(quarterTurns: 3, child: contextView);
+    }
   }
 }
 
