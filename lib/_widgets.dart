@@ -165,7 +165,7 @@ class MyInfoButtonWidget extends StatelessWidget {
                 onPressed: () {
                   Navigator.pop(context);
                 },
-                child: const Text("OK"),
+                child: const Text("确认"),
               ),
             ],
           ),

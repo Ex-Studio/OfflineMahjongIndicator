@@ -1,5 +1,9 @@
-# My
+# [My]
 playground.dart
+# screenshots by Flutter `s`
+*.png
+
+# [Flutter]
 
 # Miscellaneous
 *.class

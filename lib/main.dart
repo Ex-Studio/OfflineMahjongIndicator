@@ -142,7 +142,7 @@ class ContextView extends StatelessWidget {
             }
           },
         ),
-        // 帮助按钮
+
         MyEdgeCenterWidget(
             position: MyRoundEnum.bottomCenter,
             padding: MyExtensions.screenLengthShorter(context,
@@ -150,6 +150,20 @@ class ContextView extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
+                // 信息按钮
+                MyInfoButtonWidget(
+                  infoTitle: Text("线下日麻指示器"),
+                  infoContent: Text(appInfo),
+                  buttonContent: Icon(
+                    CupertinoIcons.info_circle,
+                    size: MyExtensions.screenLengthShorter(context,
+                        percentage: defaultIconSizePercentage),
+                  ),
+                ),
+                SizedBox(
+                    width: MyExtensions.screenWidth(context,
+                        percentage: defaultPaddingSizePercentage)),
+                // 帮助按钮
                 MyInfoButtonWidget(
                   infoTitle: Text("使用帮助"),
                   infoContent: Text(usageInfo),
