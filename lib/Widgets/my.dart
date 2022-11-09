@@ -144,48 +144,6 @@ class MyVerticleAddMinusWidget extends StatelessWidget {
   }
 }
 
-class MyInfoButtonWidget extends StatelessWidget {
-  final Widget infoTitle;
-  final Widget infoContent;
-  final Widget buttonContent;
-
-  const MyInfoButtonWidget({
-    super.key,
-    required this.infoTitle,
-    required this.infoContent,
-    required this.buttonContent,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return CupertinoButton(
-      onPressed: () {
-        showCupertinoDialog<void>(
-          context: context,
-          builder: (BuildContext context) {
-            Widget alertDialog = CupertinoAlertDialog(
-              title: infoTitle,
-              content: Center(child: infoContent),
-              actions: <CupertinoDialogAction>[
-                CupertinoDialogAction(
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                  child: const Text("确认"),
-                ),
-              ],
-            );
-            return alertDialog;
-          },
-        );
-      },
-      padding: EdgeInsets.zero, // remove padding
-      minSize: 0.0,
-      child: buttonContent, // remove padding
-    );
-  }
-}
-
 class MyDestructiveButtonWidget extends StatelessWidget {
   final Widget infoTitle;
   final Widget infoContent;

@@ -1,6 +1,8 @@
 // [Widgets]
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:offlinemahjongindicator/App/More/help_button.dart';
+import 'package:offlinemahjongindicator/App/More/info_button.dart';
 import 'package:offlinemahjongindicator/Widgets/my.dart';
 // [Views]
 // [Data]
@@ -9,6 +11,7 @@ import 'package:offlinemahjongindicator/Models/my.dart';
 import 'package:offlinemahjongindicator/Constants/my.dart';
 // [Auxiliary]
 import 'package:offlinemahjongindicator/Extensions/my.dart';
+
 // ----------------
 
 class ContextView extends StatelessWidget {
@@ -70,30 +73,14 @@ class ContextView extends StatelessWidget {
                         percentage: 0.2)),
 
                 // 信息按钮
-                MyInfoButtonWidget(
-                  infoTitle: const Text("线下日麻指示器"),
-                  infoContent: const Text(appInfo),
-                  buttonContent: Icon(
-                    CupertinoIcons.info_circle,
-                    size: MyExtensions.screenLengthShorter(context,
-                        percentage: defaultIconSizePercentage),
-                  ),
-                ),
+                const InfoButtonView(),
 
                 SizedBox(
                     height: MyExtensions.screenLengthShorter(context,
                         percentage: defaultPaddingSizePercentage)),
 
                 // 帮助按钮
-                MyInfoButtonWidget(
-                  infoTitle: const Text("使用帮助"),
-                  infoContent: const Text(usageInfo),
-                  buttonContent: Icon(
-                    CupertinoIcons.question_circle,
-                    size: MyExtensions.screenLengthShorter(context,
-                        percentage: defaultIconSizePercentage),
-                  ),
-                ),
+                const HelpButtonView(),
               ],
             )),
       ],
