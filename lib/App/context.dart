@@ -1,8 +1,8 @@
 // [Widgets]
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:offlinemahjongindicator/App/More/help_button.dart';
-import 'package:offlinemahjongindicator/App/More/info_button.dart';
+import 'package:offlinemahjongindicator/App/help_button.dart';
+import 'package:offlinemahjongindicator/App/info_button.dart';
 import 'package:offlinemahjongindicator/Widgets/my.dart';
 // [Views]
 // [Data]
@@ -11,7 +11,6 @@ import 'package:offlinemahjongindicator/Models/my.dart';
 import 'package:offlinemahjongindicator/Constants/my.dart';
 // [Auxiliary]
 import 'package:offlinemahjongindicator/Extensions/my.dart';
-
 // ----------------
 
 class ContextView extends StatelessWidget {
