@@ -22,6 +22,8 @@ Color defaultColor = Colors.green.shade400;
 
 // [values]
 
+const List<String> juCharacters = ["東", "南", "西", "北"];
+
 const String usageInfo = """将东朝亲家横向放置
 长按解锁按键进行操作""";
 

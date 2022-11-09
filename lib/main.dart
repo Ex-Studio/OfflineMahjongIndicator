@@ -134,7 +134,7 @@ class CenterView extends StatelessWidget {
               return RotatedBox(
                   quarterTurns: 2,
                   child: Text(
-                    "北",
+                    juCharacters[2],
                     style: centerLargeTextStyle,
                   ));
             } else {
@@ -187,7 +187,7 @@ class CenterView extends StatelessWidget {
                   return RotatedBox(
                       quarterTurns: 1,
                       child: Text(
-                        "東",
+                        juCharacters[3],
                         style: centerLargeTextStyle,
                       ));
                 } else {
@@ -256,7 +256,7 @@ class CenterView extends StatelessWidget {
                   return RotatedBox(
                       quarterTurns: 3,
                       child: Text(
-                        "西",
+                        juCharacters[1],
                         style: centerLargeTextStyle,
                       ));
                 } else {
@@ -292,7 +292,7 @@ class CenterView extends StatelessWidget {
               return RotatedBox(
                   quarterTurns: 0,
                   child: Text(
-                    "南",
+                    juCharacters[0],
                     style: centerLargeTextStyle,
                   ));
             } else {
