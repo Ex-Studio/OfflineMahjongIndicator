@@ -22,7 +22,7 @@ Color defaultColor = Colors.green.shade400;
 
 // [values]
 
-const String usageInfo = """将手机朝东家横向放置
+const String usageInfo = """将东朝亲家横向放置
 长按解锁按键进行操作""";
 
 const String appInfo = """开发者

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -157,18 +158,28 @@ class MyInfoButtonWidget extends StatelessWidget {
       onPressed: () {
         showCupertinoDialog<void>(
           context: context,
-          builder: (BuildContext context) => CupertinoAlertDialog(
-            title: infoTitle,
-            content: Center(child: infoContent),
-            actions: <CupertinoDialogAction>[
-              CupertinoDialogAction(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                child: const Text("确认"),
-              ),
-            ],
-          ),
+          builder: (BuildContext context) {
+            Widget alertDialog = CupertinoAlertDialog(
+              title: infoTitle,
+              content: Center(child: infoContent),
+              actions: <CupertinoDialogAction>[
+                CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: const Text("确认"),
+                ),
+              ],
+            );
+
+            if (kDebugMode) {
+              // great for debugging
+              return alertDialog;
+            } else {
+              // great for mobile phone
+              return RotatedBox(quarterTurns: 3, child: alertDialog);
+            }
+          },
         );
       },
       padding: EdgeInsets.zero, // remove padding
@@ -198,29 +209,39 @@ class MyDestructiveButtonWidget extends StatelessWidget {
       onPressed: () {
         showCupertinoDialog<void>(
           context: context,
-          builder: (BuildContext context) => CupertinoAlertDialog(
-            title: infoTitle,
-            content: Center(child: infoContent),
-            actions: <CupertinoDialogAction>[
-              CupertinoDialogAction(
-                onPressed: () {
-                  Navigator.pop(context);
-                },
-                isDefaultAction: false,
-                isDestructiveAction: false,
-                child: const Text("取消"),
-              ),
-              CupertinoDialogAction(
-                onPressed: () {
-                  Navigator.pop(context);
-                  destructiveCallback();
-                },
-                isDefaultAction: true,
-                isDestructiveAction: true,
-                child: const Text("确认"),
-              ),
-            ],
-          ),
+          builder: (BuildContext context) {
+            Widget alertDialog = CupertinoAlertDialog(
+              title: infoTitle,
+              content: Center(child: infoContent),
+              actions: <CupertinoDialogAction>[
+                CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  isDefaultAction: false,
+                  isDestructiveAction: false,
+                  child: const Text("取消"),
+                ),
+                CupertinoDialogAction(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    destructiveCallback();
+                  },
+                  isDefaultAction: true,
+                  isDestructiveAction: true,
+                  child: const Text("确认"),
+                ),
+              ],
+            );
+
+            if (kDebugMode) {
+              // great for debugging
+              return alertDialog;
+            } else {
+              // great for mobile phone
+              return RotatedBox(quarterTurns: 3, child: alertDialog);
+            }
+          },
         );
       },
       padding: EdgeInsets.zero, // remove padding
