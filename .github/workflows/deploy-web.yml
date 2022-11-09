@@ -1,6 +1,4 @@
-# Reference: https://github.com/subosito/flutter-action
-
-name: Deploy - GitHub Pages
+name: Deploy GitHub Pages
 on:
   push:
     branches:
@@ -14,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
+    # https://github.com/subosito/flutter-action
     - name: Install Flutter
       uses: subosito/flutter-action@v2
       with:
@@ -21,13 +20,10 @@ jobs:
     - run: flutter --version
     - run: flutter pub get
     - run: flutter build web --web-renderer html
+    # https://github.com/peaceiris/actions-gh-pages
     - name: Deploy to gh-pages
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         publish_dir: ./build/web
-    - run: flutter build apk
-    - uses: actions/upload-artifact@v2
-      with:
-        name: CI-apk
-        path: ./build/app/outputs/apk/release/app-release.apk
+        force_orphan: true
