@@ -10,7 +10,7 @@ const double centerLargeTextSizePercentage = 0.20;
 const double operationTextSizePercentage = 0.06;
 const double operationIconSizePercentage = 0.08;
 
-const double defaultPaddingSizePercentage = 0.03;
+const double defaultPaddingSizePercentage = 0.04;
 const double defaultTextSizePercentage = 0.08;
 const double defaultIconSizePercentage = 0.08;
 

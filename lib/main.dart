@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:provider/provider.dart';
 
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import 'package:offlinemahjongindicator/_constants.dart';
 void main() {
   runApp(
     MaterialApp(
+      theme: ThemeData(primaryColor: Colors.white),
       home: Scaffold(
         body: ChangeNotifierProvider(
           create: (context) => MyModel(),
@@ -19,6 +19,7 @@ void main() {
         ),
       ),
       debugShowCheckedModeBanner: false,
+      // showSemanticsDebugger: true,
     ),
   );
 }
@@ -68,83 +69,19 @@ class ContextView extends StatelessWidget {
                 percentage: defaultPaddingSizePercentage),
             rotationQuarterTurns: 1,
             child: currentJuChangText),
-        // 上方的重置按钮
-        Consumer<MyModel>(
-          builder: (context, model, child) {
-            if (model.isOperating) {
-              return MyEdgeCenterWidget(
-                  position: MyRoundEnum.topCenter,
-                  padding: MyExtensions.screenLengthShorter(context,
-                      percentage: defaultPaddingSizePercentage),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      MyDestructiveButtonWidget(
-                        infoTitle: const Text("重置局数"),
-                        infoContent: const Text("重置局数会将当前局数置为東1局"),
-                        buttonContent: Text("重置局数",
-                            style: TextStyle(
-                                fontSize: MyExtensions.screenLengthShorter(
-                                    context,
-                                    percentage: operationTextSizePercentage))),
-                        destructiveCallback: () {
-                          model.resetJu();
-                        },
-                      ),
-                      SizedBox(
-                          width: MyExtensions.screenLengthShorter(context,
-                              percentage: defaultPaddingSizePercentage)),
-                      MyDestructiveButtonWidget(
-                        infoTitle: const Text("重置场数"),
-                        infoContent: const Text("重置场数会将当前本场数置为0"),
-                        buttonContent: Text("重置场数",
-                            style: TextStyle(
-                                fontSize: MyExtensions.screenLengthShorter(
-                                    context,
-                                    percentage: operationTextSizePercentage))),
-                        destructiveCallback: () {
-                          model.resetChang();
-                        },
-                      ),
-                    ],
-                  ));
-            } else {
-              return const SizedBox.shrink();
-            }
-          },
-        ),
-        // 下方重新开始按钮
-        Consumer<MyModel>(
-          builder: (context, model, child) {
-            if (model.isOperating) {
-              return MyEdgeCenterWidget(
-                  position: MyRoundEnum.bottomCenter,
-                  padding: MyExtensions.screenLengthShorter(context,
-                      percentage: defaultPaddingSizePercentage),
-                  child: MyDestructiveButtonWidget(
-                    infoTitle: const Text("确认重新开始"),
-                    infoContent: const Text("重新开始会将当前进度置为 東1局0本场"),
-                    buttonContent: Text("重新开始",
-                        style: TextStyle(
-                            fontSize: MyExtensions.screenLengthShorter(context,
-                                percentage: operationTextSizePercentage))),
-                    destructiveCallback: () {
-                      model.restartGame();
-                    },
-                  ));
-            } else {
-              return const SizedBox.shrink();
-            }
-          },
-        ),
 
+        // 右上角小按钮
         MyEdgeCenterWidget(
-            position: MyRoundEnum.bottomCenter,
+            position: MyRoundEnum.rightCenter,
             padding: MyExtensions.screenLengthShorter(context,
                 percentage: defaultPaddingSizePercentage),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                SizedBox(
+                    height: MyExtensions.screenLengthShorter(context,
+                        percentage: 0.2)),
+
                 // 信息按钮
                 MyInfoButtonWidget(
                   infoTitle: const Text("线下日麻指示器"),
@@ -155,9 +92,11 @@ class ContextView extends StatelessWidget {
                         percentage: defaultIconSizePercentage),
                   ),
                 ),
+
                 SizedBox(
-                    width: MyExtensions.screenWidth(context,
+                    height: MyExtensions.screenLengthShorter(context,
                         percentage: defaultPaddingSizePercentage)),
+
                 // 帮助按钮
                 MyInfoButtonWidget(
                   infoTitle: const Text("使用帮助"),
@@ -168,22 +107,11 @@ class ContextView extends StatelessWidget {
                         percentage: defaultIconSizePercentage),
                   ),
                 ),
-                SizedBox(
-                    width: MyExtensions.screenWidth(context,
-                        percentage: defaultTextSizePercentage +
-                            defaultPaddingSizePercentage)),
               ],
             )),
       ],
     );
-
-    if (kDebugMode) {
-      // great for debugging
-      return contextView;
-    } else {
-      // great for mobile phone
-      return RotatedBox(quarterTurns: 3, child: contextView);
-    }
+    return contextView;
   }
 }
 
@@ -199,44 +127,69 @@ class CenterView extends StatelessWidget {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        // 按钮上方的行
+        // 中央按钮上方
         Consumer<MyModel>(
           builder: (context, model, child) {
             if (!model.isOperating) {
+              return RotatedBox(
+                  quarterTurns: 2,
+                  child: Text(
+                    "北",
+                    style: centerLargeTextStyle,
+                  ));
+            } else {
               return Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  RotatedBox(
-                      quarterTurns: 2,
-                      child: Text(
-                        "西",
-                        style: centerLargeTextStyle,
-                      ))
+                  MyDestructiveButtonWidget(
+                    infoTitle: const Text("重置局数"),
+                    infoContent: const Text("重置局数会将当前局数置为東1局"),
+                    buttonContent: Text("重置局数",
+                        style: TextStyle(
+                            fontSize: MyExtensions.screenLengthShorter(context,
+                                percentage: operationTextSizePercentage))),
+                    destructiveCallback: () {
+                      model.resetJu();
+                    },
+                  ),
+                  SizedBox(
+                      width: MyExtensions.screenLengthShorter(context,
+                          percentage: defaultPaddingSizePercentage)),
+                  MyDestructiveButtonWidget(
+                    infoTitle: const Text("重置场数"),
+                    infoContent: const Text("重置场数会将当前本场数置为0"),
+                    buttonContent: Text("重置场数",
+                        style: TextStyle(
+                            fontSize: MyExtensions.screenLengthShorter(context,
+                                percentage: operationTextSizePercentage))),
+                    destructiveCallback: () {
+                      model.resetChang();
+                    },
+                  ),
                 ],
               );
-            } else {
-              return const SizedBox.shrink();
             }
           },
         ),
-        // 按钮所在的中间行
+
+        SizedBox(
+            height: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage)),
+
+        // 中央按钮所在的中间行
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // 中央按钮左侧
             Consumer<MyModel>(
               builder: (context, model, child) {
                 if (!model.isOperating) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      RotatedBox(
-                          quarterTurns: 1,
-                          child: Text(
-                            "北",
-                            style: centerLargeTextStyle,
-                          ))
-                    ],
-                  );
+                  return RotatedBox(
+                      quarterTurns: 1,
+                      child: Text(
+                        "東",
+                        style: centerLargeTextStyle,
+                      ));
                 } else {
                   return MyVerticleAddMinusWidget(
                     iconSize: MyExtensions.screenLengthShorter(context,
@@ -256,6 +209,12 @@ class CenterView extends StatelessWidget {
                 }
               },
             ),
+
+            SizedBox(
+                width: MyExtensions.screenLengthShorter(context,
+                    percentage: defaultPaddingSizePercentage)),
+
+            // 中央按钮
             Consumer<MyModel>(
               builder: (context, model, child) {
                 return ElevatedButton(
@@ -285,20 +244,21 @@ class CenterView extends StatelessWidget {
                 );
               },
             ),
+
+            SizedBox(
+                width: MyExtensions.screenLengthShorter(context,
+                    percentage: defaultPaddingSizePercentage)),
+
+            // 中央按钮右侧
             Consumer<MyModel>(
               builder: (context, model, child) {
                 if (!model.isOperating) {
-                  return Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      RotatedBox(
-                          quarterTurns: 3,
-                          child: Text(
-                            "南",
-                            style: centerLargeTextStyle,
-                          ))
-                    ],
-                  );
+                  return RotatedBox(
+                      quarterTurns: 3,
+                      child: Text(
+                        "西",
+                        style: centerLargeTextStyle,
+                      ));
                 } else {
                   return MyVerticleAddMinusWidget(
                     iconSize: MyExtensions.screenLengthShorter(context,
@@ -320,23 +280,33 @@ class CenterView extends StatelessWidget {
             ),
           ],
         ),
-        // 按钮下方的行
+
+        SizedBox(
+            height: MyExtensions.screenLengthShorter(context,
+                percentage: defaultPaddingSizePercentage)),
+
+        // 中央按钮下方
         Consumer<MyModel>(
           builder: (context, model, child) {
             if (!model.isOperating) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  RotatedBox(
-                      quarterTurns: 0,
-                      child: Text(
-                        "東",
-                        style: centerLargeTextStyle,
-                      ))
-                ],
-              );
+              return RotatedBox(
+                  quarterTurns: 0,
+                  child: Text(
+                    "南",
+                    style: centerLargeTextStyle,
+                  ));
             } else {
-              return const SizedBox.shrink();
+              return MyDestructiveButtonWidget(
+                infoTitle: const Text("确认重新开始"),
+                infoContent: const Text("重新开始会将当前进度置为 東1局0本场"),
+                buttonContent: Text("重新开始",
+                    style: TextStyle(
+                        fontSize: MyExtensions.screenLengthShorter(context,
+                            percentage: operationTextSizePercentage))),
+                destructiveCallback: () {
+                  model.restartGame();
+                },
+              );
             }
           },
         ),

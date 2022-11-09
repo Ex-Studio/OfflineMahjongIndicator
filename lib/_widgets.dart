@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -172,13 +171,7 @@ class MyInfoButtonWidget extends StatelessWidget {
               ],
             );
 
-            if (kDebugMode) {
-              // great for debugging
-              return alertDialog;
-            } else {
-              // great for mobile phone
-              return RotatedBox(quarterTurns: 3, child: alertDialog);
-            }
+            return alertDialog;
           },
         );
       },
@@ -234,13 +227,7 @@ class MyDestructiveButtonWidget extends StatelessWidget {
               ],
             );
 
-            if (kDebugMode) {
-              // great for debugging
-              return alertDialog;
-            } else {
-              // great for mobile phone
-              return RotatedBox(quarterTurns: 3, child: alertDialog);
-            }
+            return alertDialog;
           },
         );
       },
