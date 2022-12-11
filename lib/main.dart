@@ -17,8 +17,8 @@ void main() {
   if (kDebugMode || kIsWeb) {
     runApp(MaterialApp(
       theme: ThemeData(primaryColor: Colors.white),
-      home: Scaffold(
-        body: ChangeNotifierProvider(
+      home: Material(
+        child: ChangeNotifierProvider(
           create: (context) => MyModel(),
           child: const ContextView(),
         ),
@@ -35,8 +35,8 @@ void main() {
       FullScreen.enterFullScreen(FullScreenMode.EMERSIVE_STICKY);
       runApp(MaterialApp(
         theme: ThemeData(primaryColor: Colors.white),
-        home: Scaffold(
-          body: ChangeNotifierProvider(
+        home: Material(
+          child: ChangeNotifierProvider(
             create: (context) => MyModel(),
             child: const ContextView(),
           ),
@@ -45,8 +45,8 @@ void main() {
     });
   } else {
     runApp(const MaterialApp(
-      home: Scaffold(
-        body: Center(child: Text("尚未支持的平台")),
+      home: Material(
+        child: Center(child: Text("尚未支持的平台")),
       ),
     ));
   }
